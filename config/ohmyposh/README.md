@@ -4,11 +4,11 @@ Oh My Posh is a custom prompt engine for any shell. It's designed to make your c
 
 ![img](https://ohmyposh.dev/img/hero.png)
 
-## Installation
+## 📦 Installation
 
 Visit Oh My Posh website [here](https://ohmyposh.dev/docs/installation/windows "oh my posh") and follow the prompts for your desired shell
 
-## Custom Theme
+## 🎨 Custom Theme
 
 1. Copy the json file to the themes directory - C:\Users\\{{user}}\AppData\Local\Programs\oh-my-posh\themes\
 2. Run the script to select a theme using `mrryt.omp.json` instead
