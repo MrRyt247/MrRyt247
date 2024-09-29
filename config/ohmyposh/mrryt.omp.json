@@ -57,18 +57,6 @@
       "alignment": "right",
       "segments": [
         {
-          "background": "#FEF5ED",
-          "foreground": "#011627",
-          "leading_diamond": "\ue0b2",
-          "properties": {
-            "time_format": "15:04:05"
-          },
-          "style": "diamond",
-          "template": " {{ .CurrentDate | date .Format }} ",
-          "trailing_diamond": "<transparent,#FEF5ED>\ue0b2</>",
-          "type": "time"
-        },
-        {
           "background": "#17D7A0",
           "foreground": "#011627",
           "leading_diamond": "\ue0b2",
@@ -81,8 +69,20 @@
           },
           "style": "diamond",
           "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
-          "trailing_diamond": "\ue0b0",
+          "trailing_diamond": "<transparent,#17D7A0>\ue0b2</>",
           "type": "git"
+        },
+        {
+          "background": "#FEF5ED",
+          "foreground": "#011627",
+          "leading_diamond": "\ue0b2",
+          "properties": {
+            "time_format": "15:04:05"
+          },
+          "style": "diamond",
+          "template": " {{ .CurrentDate | date .Format }} ",
+          "trailing_diamond": "<transparent,#FEF5ED>\ue0b2</>",
+          "type": "time"
         }
       ],
       "type": "prompt"
