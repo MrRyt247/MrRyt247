@@ -18,3 +18,19 @@ Visit Oh My Posh website [here](https://ohmyposh.dev/docs/installation/windows "
 mrryt.omp.json
 
 NB: If you cannot find AppData folder, enable show Hidden Items. If persistent, type %appdata% in the address bar, change directory back to AppData and proceed with navigation.
+
+For more terminal customizations, proceed to install Terminal icons [here](https://github.com/devblackops/Terminal-Icons "Terminal Icons GitHub repo")!
+
+## 👁️‍🗨️ Terminal Icons
+
+*Terminal-Icons* is a PowerShell module that adds file and folder icons when displaying items in the terminal. This relies on the custom fonts provided by [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts).
+
+![pwsh terminal-icons](https://github.com/devblackops/Terminal-Icons/blob/main/media/screenshot.png)
+
+For further PowerShell customizations, proceed to install PSReadline [here](https://github.com/PowerShell/PSReadLine "PSReadline GitHub Repo")!
+
+## 📝 PSReadline
+
+This module replaces the command line editing experience of PowerShell for versions 3 and up. It provides *Syntax coloring, *Simple syntax error notification*, *A good multi-line experience (both editing and history),* and a lot more.
+
+I recommend John Savill's [video](https://www.youtube.com/watch?v=Q11sSltuTE0) (2021) covering installation, configuration, and tailoring PSReadLine to your liking.
