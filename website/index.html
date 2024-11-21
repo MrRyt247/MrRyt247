@@ -17,11 +17,14 @@
 <body>
     <nav>
         <span>Flavio Sobbin</span>
-        <ul class="ref">
-            <li><a href="#about">About</a></li>
-            <li><a href="#tech-stack">Tech Stack</a></li>
-            <li><a href="#projects">Projects</a></li>
-        </ul>
+        <div class="ref-wrapper">
+            <ul class="ref">
+                <li><a href="#about">About</a></li>
+                <li><a href="#tech-stack">Tech Stack</a></li>
+                <li><a href="#projects">Projects</a></li>
+            </ul>
+            <span id="scroll-progress-bar"></span>
+        </div>
         <ul class="socials">
             <li>
                 <a href="http://#">
@@ -43,17 +46,21 @@
     <main>
         <section id="about">
             <div class="profile">
-                <img src="./assets/avatar_256.jpg" alt="me" />
+                <img src="./assets/me.jpg" alt="me" />
             </div>
             <div class="info">
                 <h1>Flavio Nana Badu Sobbin</h1>
+                <p>Full Stack Web Developer</p>
+                <p>Computer Engineering Student @ KNUST</p>
                 <div class="location">
                     <img src="./assets/location-pin-bw.svg" alt="location" />
                     <p>Ghana</p>
                 </div>
-                <p>Computer Engineering Student @ KNUST</p>
                 <div class="links">
-                    <button type="button">Resume</button>
+                    <button type="button">
+                        <p>Resume</p>
+                        <img src="assets/download.svg" alt="download">
+                    </button>
                     <ul class="socials">
                         <li>
                             <a href="http://#">
@@ -76,8 +83,11 @@
         </section>
         <section id="tech-stack">
             <div class="header">
-                <h1>Current Technologies</h1>
-                <button type="button">All</button>
+                <h1>Technology Stack</h1>
+                <button type="button">
+                    <p>All</p>
+                    <img src="assets/download.svg" alt="next">
+                </button>
             </div>
             <hr />
             <div class="body">
@@ -98,7 +108,7 @@
                     <div class="card">
                         <img src="assets/js-official.svg" alt="JS" />
                         <div class="info">
-                            <p>JavaScript</p>
+                            <p>JS</p>
                         </div>
                     </div>
                     <div class="card">
@@ -116,7 +126,7 @@
                     <div class="card">
                         <img src="./assets/typescript.svg" alt="TypeScript" />
                         <div class="info">
-                            <p>TypeScript</p>
+                            <p>TS</p>
                         </div>
                     </div>
                 </div>
@@ -125,7 +135,10 @@
         <section id="projects">
             <div class="header">
                 <h1>My Portfolio</h1>
-                <button type="button">All</button>
+                <button type="button">
+                    <p>All</p>
+                    <img src="assets/download.svg" alt="next">
+                </button>
             </div>
             <hr />
             <div class="content">
@@ -217,7 +230,7 @@
         </section>
     </main>
     <footer></footer>
-    <script src="sript.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
