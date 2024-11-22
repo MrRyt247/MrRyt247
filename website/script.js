@@ -75,6 +75,7 @@ window.onload = () => {
   homeInfo.addEventListener("animationend", () => {
     homeInfoHeading.style.textWrap = "stable";
     homeInfoBio.style.textWrap = "stable";
+    document.querySelector("#home .info .info-wrapper").style.overflow = "visible";
   });
 
   // Updates Variables on Screen Resize

@@ -25,13 +25,13 @@ body {
 
   button {
     font-family: Afacad, sans-serif;
-    font-size: clamp(0.8rem, 1.2rem, 1.5rem);
+    font-size: clamp(0.9rem, 1.7vw, 1.5rem);
   }
-}
 
-::selection {
-  background-color: var(--primary);
-  color: var(--bg);
+  ::selection {
+    background-color: var(--primary);
+    color: var(--bg);
+  }
 }
 
 /* Nav */
@@ -83,8 +83,9 @@ nav {
       height: 5px;
       width: 5px;
       border-radius: 50%;
-      inset: -2px var(--progress-width);
+      inset: -2.5px var(--progress-width);
       background-color: var(--font-color);
+      transition: inset 250ms ease-in-out;
     }
   }
 
@@ -95,6 +96,12 @@ nav {
     column-gap: 0.35rem;
     img {
       width: 1.25rem;
+      transition: all 400ms ease-out;
+    }
+    a:hover {
+      img {
+        scale: 1.2;
+      }
     }
   }
 }
@@ -222,52 +229,78 @@ section {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 5.8rem;
-        column-gap: 1.5rem;
-        padding: 0.25rem 0.8rem;
+        column-gap: 0.2rem;
+        padding: 0.2 0.04rem;
         font-weight: bold;
         user-select: none;
-        background-color: var(--bg);
-        border: solid 1px;
+        background-color: transparent;
+        border: solid 2px transparent;
+        border-bottom: solid 2px var(--font-color);
+        position: relative;
         transition: all 400ms ease-out;
-        overflow: hidden;
 
         img {
-          height: 1.5rem;
+          height: 1.75rem;
         }
       }
 
       button:hover {
         cursor: pointer;
-        padding: 0.25rem 0.35rem;
-        column-gap: 0.1rem;
-        background-color: var(--primary);
+        border: solid 2px;
+
+        .tooltip {
+          visibility: visible;
+          opacity: 1;
+        }
       }
 
       ul {
         display: inline-flex;
-        column-gap: 3px;
         padding: 0;
-        column-gap: 0.4rem;
+        column-gap: 0.5rem;
 
         li {
           list-style: none;
           align-content: center;
+          position: relative;
 
           a {
             display: flex;
 
             img {
               width: clamp(1.2rem, 3vw, 1.8rem);
+              transition: all 400ms ease-out;
             }
           }
 
           a:hover {
             img {
-              filter: hue-rotate(120deg);
+              /* filter: invert(); */
+              scale: 1.2;
+            }
+            + .tooltip {
+              visibility: visible;
+              opacity: 1;
             }
           }
         }
+      }
+      .tooltip {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, 20%);
+        width: max-content;
+        padding: 0.4rem 0.5rem;
+        font-size: 0.8rem;
+        z-index: 1;
+        background-color: var(--bg);
+        color: var(--font-color);
+        border: solid 1px var(--primary);
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 800ms ease-out;
+        transition-delay: 500ms;
       }
     }
   }
@@ -279,6 +312,7 @@ section {
 
 #about {
   max-width: 1088px;
+  user-select: contain;
 }
 
 #tech-stack {
@@ -418,7 +452,7 @@ section {
 footer {
   background-color: var(--primary);
   box-shadow: 0 0 7px 4px var(--secondary);
-  padding: .2rem 1.5rem;
+  padding: 0.2rem 1.5rem;
   text-align: center;
 
   a {
@@ -465,6 +499,14 @@ footer {
   }
 }
 
+@media (prefers-color-scheme: light) {
+  .links > button {
+    img {
+      filter: invert();
+    }
+  }
+}
+
 /* Scroll Transtions */
 
 @keyframes slide-fade-in {
@@ -474,15 +516,17 @@ footer {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  section {
+  #about,
+  #tech-stack,
+  #projects {
     animation: slide-fade-in both;
-    animation-timeline: view(0 2%);
+    animation-timeline: view(10%);
     /* animation-range: contain 05 contain 50%; */
     /* animation-range: entry 0 cover 30%; */
   }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 450px) {
   nav {
     span:first-child {
       display: none;
@@ -519,7 +563,6 @@ footer {
 
         h1 {
           text-wrap: stable;
-          /* text-align: center; */
         }
       }
     }
