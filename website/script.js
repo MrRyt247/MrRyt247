@@ -1,26 +1,51 @@
+/*TODO:
+  1. Recreate the Home Section
+  2. Create an intro animation
+  3. Revamp the Tech Stack
+  4. Change the buttons
+  5. Add Experience section
+
+  */
+
 window.onload = () => {
   const navBar = document.querySelector("nav");
   const scrollProgress = document.getElementById("scroll-progress-bar");
   let scrollProgressBarWidth = scrollProgress.clientWidth - 4; // Conpensate for CSS insert offset
   let totalHeight = document.body.scrollHeight - window.innerHeight;
+  const home = document.getElementById("home");
   const about = document.getElementById("about");
   const techStack = document.getElementById("tech-stack");
   const projects = document.getElementById("projects");
-  //   let aboutPosition = about.offsetTop;
+  //   let homePosition = home.offsetTop;
+  let aboutPosition = about.offsetTop;
   let techStackPosition = techStack.offsetTop;
   let projectsPosition = projects.offsetTop;
+  const homeLink = document.getElementById("home-link");
   const aboutLink = document.getElementById("about-link");
   const techStackLink = document.getElementById("tech-stack-link");
   const projectsLink = document.getElementById("projects-link");
-  let refColumnGap = parseFloat(
-    getComputedStyle(aboutLink.parentElement).columnGap.slice(0, -2)
-  ).toFixed(2);
-  let aboutWidth = aboutLink.offsetWidth + parseFloat(refColumnGap);
-  let techStackWidth = techStackLink.offsetWidth + parseFloat(refColumnGap);
+  // let refColumnGap = parseFloat(
+  //   getComputedStyle(homeLink.parentElement).columnGap.slice(0, -2)
+  // ).toFixed(2);
+
+  let homeAbsWidth = homeLink.offsetWidth;
+  let aboutAbsWidth = aboutLink.offsetWidth;
+  let techStackAbsWidth = techStackLink.offsetWidth;
   let projectsWidth = projectsLink.offsetWidth;
+  let refColumnGap =
+    (scrollProgressBarWidth -
+      homeAbsWidth -
+      aboutAbsWidth -
+      techStackAbsWidth -
+      projectsWidth) /
+    3;
+  let homeWidth = homeAbsWidth + parseFloat(refColumnGap);
+  let aboutWidth = aboutAbsWidth + parseFloat(refColumnGap);
+  let techStackWidth = techStackAbsWidth + parseFloat(refColumnGap);
 
   console.log(
     refColumnGap,
+    homeWidth,
     aboutWidth,
     techStackWidth,
     projectsWidth,
@@ -42,50 +67,57 @@ window.onload = () => {
     scrollProgressBarWidth = scrollProgress.clientWidth - 4;
     totalHeight = document.body.scrollHeight - window.innerHeight;
     refColumnGap = parseFloat(
-      getComputedStyle(aboutLink.parentElement).columnGap.slice(0, -2)
+      getComputedStyle(homeLink.parentElement).columnGap.slice(0, -2)
     ).toFixed(2);
     techStackPosition = techStack.offsetTop;
     projectsPosition = projects.offsetTop;
-    aboutWidth = aboutLink.offsetWidth + parseFloat(refColumnGap);
+    homeWidth = homeLink.offsetWidth + parseFloat(refColumnGap);
     techStackWidth = techStackLink.offsetWidth + parseFloat(refColumnGap);
     projectsWidth = projectsLink.offsetWidth;
   });
 
   window.addEventListener("resize", handleResize);
 
+  // Scroll Events
+
   window.addEventListener("scroll", () => {
     let progressWidth;
     //   Math.sin(((Math.floor(window.scrollY) / totalHeight) * Math.PI) / 2) *
     //   scrollProgressBarWidth;
 
-    if (Math.floor(window.scrollY) <= techStackPosition) {
+    if (Math.floor(window.scrollY) <= aboutPosition) {
+      progressWidth = (Math.floor(window.scrollY) / aboutPosition) * homeWidth;
+    } else if (Math.floor(window.scrollY) <= techStackPosition) {
       progressWidth =
-        (Math.floor(window.scrollY) / techStackPosition) * aboutWidth;
+        (Math.floor(window.scrollY) / techStackPosition) * aboutWidth +
+        homeWidth;
     } else if (Math.floor(window.scrollY) <= projectsPosition) {
       progressWidth =
         (Math.floor(window.scrollY) / projectsPosition) * techStackWidth +
-        aboutWidth;
+        (homeWidth + aboutWidth);
     } else {
       progressWidth =
         (Math.floor(window.scrollY) / totalHeight) * projectsWidth +
         (scrollProgressBarWidth - projectsWidth);
     }
     scrollProgress.style.setProperty("--progress-width", `${progressWidth}px`);
-    console.log(
-      Math.floor(window.scrollY),
-      progressWidth,
-      Math.floor(window.scrollY) / projectsPosition
-    );
+    // console.log(
+    //   Math.floor(window.scrollY),
+    //   progressWidth,
+    //   Math.floor(window.scrollY) / projectsPosition
+    // );
 
     // NavBar Show/Hide Fade Animation
     if (Math.floor(window.scrollY) >= techStackPosition / 2) {
       //   navBar.style.display = "flex";
       navBar.style.opacity = 1;
       navBar.style.height = `${3.5}dvh`;
+      navBar.style.padding = `${0.2}rem ${1.75}rem ${0.15}rem`;
     } else {
       //   navBar.style.display = "none";
       navBar.style.opacity = 0;
       navBar.style.height = 0;
+      navBar.style.padding = 0;
     }
 
     //   let progressWidth =
@@ -100,8 +132,4 @@ window.onload = () => {
     //       Math.asin((window.scrollY / totalHeight).toFixed(2)) * (180 / Math.PI)
     //     );
   });
-  //   document.onresize = () => {
-  //     scrollProgressBarWidth = scrollProgress.clientWidth - 4; // Conpensate for CSS insert offset
-  //     totalHeight = document.body.scrollHeight - window.innerHeight;
-  //   };
 };
