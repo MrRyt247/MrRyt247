@@ -1,9 +1,10 @@
 /*TODO:
-  1. Recreate the Home Section
-  2. Create an intro animation
+  1. Recreate the Home Section <>
+  2. Create an intro animation <>
   3. Revamp the Tech Stack
   4. Change the buttons
   5. Add Experience section
+  6. Get Subtle Background Images
 
   */
 
@@ -53,6 +54,20 @@ window.onload = () => {
   );
   //   console.log(scrollProgressBarWidth);
 
+  // Home Wipe Effect
+
+  const homeInfo = document.querySelector("#home .info");
+  const homeInfoHeading = document.querySelector(
+    "#home .info .info-wrapper h1"
+  );
+  const homeInfoBio = document.querySelector("#home .info .info-wrapper p");
+  homeInfo.addEventListener("animationend", () => {
+    homeInfoHeading.style.textWrap = "stable";
+    homeInfoBio.style.textWrap = "stable";
+  });
+
+  // Updates Variables on Screen Resize
+
   function debounce(func, timeout = 300) {
     let timer;
     return (...args) => {
@@ -101,11 +116,13 @@ window.onload = () => {
         (scrollProgressBarWidth - projectsWidth);
     }
     scrollProgress.style.setProperty("--progress-width", `${progressWidth}px`);
-    // console.log(
-    //   Math.floor(window.scrollY),
-    //   progressWidth,
-    //   Math.floor(window.scrollY) / projectsPosition
-    // );
+    console.log(
+      Math.floor(window.scrollY),
+      totalHeight,
+
+      projectsWidth,
+      progressWidth
+    );
 
     // NavBar Show/Hide Fade Animation
     if (Math.floor(window.scrollY) >= techStackPosition / 2) {

@@ -6,7 +6,7 @@
   --primary: #d92919;
   --secondary: #eb2311;
   --bg: light-dark(#f3f3f3, #1e1e1e);
-  --font-color: light-dark(#000000, #ccc);
+  --font-color: light-dark(#000, #eee);
   color-scheme: light dark;
   --progress-width: 0;
 }
@@ -160,7 +160,8 @@ section {
   justify-content: center;
   column-gap: clamp(1rem, 2vw, 1.5rem);
   padding-block: 0;
-  background: linear-gradient(var(--secondary) 95%, transparent);
+  background-color: var(--secondary);
+  box-shadow: 0 0 10px 8px var(--secondary);
 
   .profile {
     width: clamp(7rem, 38vw, 11.5rem);
@@ -177,18 +178,26 @@ section {
   }
 
   .info {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template: 1fr / 0;
+    animation: wipe 800ms ease-out forwards;
+
+    .info-wrapper {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
 
     h1 {
       font-size: clamp(1.8rem, 4.7vw, 4.5rem);
       line-height: clamp(1.7rem, 4.6vw, 4.25rem);
+      text-wrap: nowrap;
     }
     p {
       font-size: clamp(0.8rem, 1.7vw, 1.5rem);
       font-weight: 500;
       color: var(--font-color);
-      text-wrap: balance;
+      text-wrap: nowrap;
     }
     .location {
       display: inline-flex;
@@ -266,6 +275,10 @@ section {
     background-color: rgb(105, 0, 0);
     text-decoration: underline 1px;
   }
+}
+
+#about {
+  max-width: 1088px;
 }
 
 #tech-stack {
@@ -402,6 +415,17 @@ section {
   }
 }
 
+/* Home Wipe Intro */
+
+@keyframes wipe {
+  from {
+    grid-template-columns: 0fr;
+  }
+  to {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Border Rotate */
 
 @property --gradient-angle {
@@ -470,16 +494,32 @@ section {
 
   #home {
     flex-direction: column;
-    row-gap: 1rem;
+    row-gap: 0.5rem;
 
     .info {
-      row-gap: 0.2rem;
+      grid-template: 0 / 1fr;
+      animation: wipe 1.2s ease-out forwards;
 
-      h1 {
-        text-wrap: stable;
-        text-align: center;
+      .info-wrapper {
+        flex-direction: column;
+        row-gap: 0.1rem;
+        align-items: center;
+        overflow: hidden;
+
+        h1 {
+          text-wrap: stable;
+          /* text-align: center; */
+        }
       }
-      align-items: center;
+    }
+  }
+
+  @keyframes wipe {
+    from {
+      grid-template-rows: 0fr;
+    }
+    to {
+      grid-template-rows: 1fr;
     }
   }
 }
