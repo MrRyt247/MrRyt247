@@ -12,7 +12,11 @@ window.onload = () => {
   const navBar = document.querySelector("nav");
   const scrollProgress = document.getElementById("scroll-progress-bar");
   let scrollProgressBarWidth = scrollProgress.clientWidth - 4; // Conpensate for CSS insert offset
-  let totalHeight = document.body.scrollHeight - window.innerHeight;
+  let scrollableHeight = parseFloat(
+    (document.body.getBoundingClientRect().height - window.innerHeight).toFixed(
+      4
+    )
+  );
   const home = document.getElementById("home");
   const about = document.getElementById("about");
   const techStack = document.getElementById("tech-stack");
@@ -44,15 +48,22 @@ window.onload = () => {
   let aboutWidth = aboutAbsWidth + parseFloat(refColumnGap);
   let techStackWidth = techStackAbsWidth + parseFloat(refColumnGap);
 
-  console.log(
-    refColumnGap,
-    homeWidth,
-    aboutWidth,
-    techStackWidth,
-    projectsWidth,
-    totalHeight
-  );
-  //   console.log(scrollProgressBarWidth);
+  // console.log(
+  //   refColumnGap,
+  //   homeWidth,
+  //   aboutWidth,
+  //   techStackWidth,
+  //   projectsWidth,
+  //   scrollableHeight
+  // );
+  // console.log(
+  //   scrollableHeight,
+  //   parseFloat(
+  //     (
+  //       document.body.getBoundingClientRect().height - window.innerHeight
+  //     ).toFixed(4)
+  //   )
+  // );
 
   // Home Wipe Effect
 
@@ -80,7 +91,7 @@ window.onload = () => {
 
   const handleResize = debounce(() => {
     scrollProgressBarWidth = scrollProgress.clientWidth - 4;
-    totalHeight = document.body.scrollHeight - window.innerHeight;
+    scrollableHeight = document.body.scrollHeight - window.innerHeight;
     refColumnGap = parseFloat(
       getComputedStyle(homeLink.parentElement).columnGap.slice(0, -2)
     ).toFixed(2);
@@ -97,56 +108,43 @@ window.onload = () => {
 
   window.addEventListener("scroll", () => {
     let progressWidth;
-    //   Math.sin(((Math.floor(window.scrollY) / totalHeight) * Math.PI) / 2) *
-    //   scrollProgressBarWidth;
+    let scrollY = parseFloat(window.scrollY.toFixed(4));
 
-    if (Math.floor(window.scrollY) <= aboutPosition) {
-      progressWidth = (Math.floor(window.scrollY) / aboutPosition) * homeWidth;
-    } else if (Math.floor(window.scrollY) <= techStackPosition) {
+    if (scrollY <= aboutPosition) {
+      progressWidth = (scrollY / aboutPosition) * homeWidth;
+    } else if (scrollY <= techStackPosition) {
+      progressWidth = (scrollY / techStackPosition) * aboutWidth + homeWidth;
+    } else if (scrollY <= projectsPosition) {
       progressWidth =
-        (Math.floor(window.scrollY) / techStackPosition) * aboutWidth +
-        homeWidth;
-    } else if (Math.floor(window.scrollY) <= projectsPosition) {
-      progressWidth =
-        (Math.floor(window.scrollY) / projectsPosition) * techStackWidth +
+        (scrollY / projectsPosition) * techStackWidth +
         (homeWidth + aboutWidth);
-    } else {
+    } else if (scrollY <= scrollableHeight) {
       progressWidth =
-        (Math.floor(window.scrollY) / totalHeight) * projectsWidth +
+        (Math.floor(window.scrollY) / scrollableHeight) * projectsWidth +
         (scrollProgressBarWidth - projectsWidth);
+    } else {
+      progressWidth = scrollProgressBarWidth;
     }
     scrollProgress.style.setProperty("--progress-width", `${progressWidth}px`);
-    console.log(
-      Math.floor(window.scrollY),
-      totalHeight,
+    // console.log(
+    //   Math.floor(window.scrollY),
+    //   scrollableHeight,
 
-      projectsWidth,
-      progressWidth
-    );
+    //   projectsWidth,
+    //   progressWidth
+    // );
+    // console.log(window.scrollY, scrollY);
 
     // NavBar Show/Hide Fade Animation
+
     if (Math.floor(window.scrollY) >= techStackPosition / 2) {
-      //   navBar.style.display = "flex";
       navBar.style.opacity = 1;
       navBar.style.height = `${3.5}dvh`;
       navBar.style.padding = `${0.2}rem ${1.75}rem ${0.15}rem`;
     } else {
-      //   navBar.style.display = "none";
       navBar.style.opacity = 0;
       navBar.style.height = 0;
       navBar.style.padding = 0;
     }
-
-    //   let progressWidth =
-    //     Math.sqrt((window.scrollY / totalHeight).toFixed(2)) *
-    //     scrollProgressBarWidth;
-    //   console.log(Math.floor(window.scrollY));
-    //   console.log(totalHeight);
-    //   console.log((window.scrollY / totalHeight).toFixed(2));
-    //     console.log(progressWidth);
-    //     console.log((window.scrollY / totalHeight).toFixed(2));
-    //     console.log(
-    //       Math.asin((window.scrollY / totalHeight).toFixed(2)) * (180 / Math.PI)
-    //     );
   });
 };
