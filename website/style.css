@@ -156,7 +156,17 @@ section {
     font-size: clamp(2rem, 5.7vw, 3.5rem);
     color: var(--font-color);
     text-wrap: balance;
+    position: relative;
     /* -webkit-text-stroke: 1.6px var(--font-color); */
+  }
+  h1::after {
+    content: "";
+    position: absolute;
+    inset: 80% 0;
+    transform: translateY(50%);
+    background-color: var(--font-color);
+    width: 0;
+    height: 2px;
   }
 }
 
@@ -510,19 +520,43 @@ footer {
 /* Scroll Transtions */
 
 @keyframes slide-fade-in {
-  from {
+  0% {
     opacity: 0.05;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+
+@keyframes heading-underline {
+  0%,
+  30% {
+    width: 0;
+  }
+  45%,
+  75% {
+    width: 100%;
+  }
+  95% {
+    width: 0;
   }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  #about,
+  /* #about,
   #tech-stack,
   #projects {
     animation: slide-fade-in both;
-    animation-timeline: view(10%);
-    /* animation-range: contain 05 contain 50%; */
-    /* animation-range: entry 0 cover 30%; */
+    animation-timeline: view();
+  } */
+  main :not(:first-of-type) {
+    animation: slide-fade-in both;
+    animation-timeline: view();
+  }
+
+  section h1:not(#home h1)::after {
+    animation: heading-underline ease-out both;
+    animation-timeline: view();
   }
 }
 

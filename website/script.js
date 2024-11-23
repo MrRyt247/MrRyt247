@@ -2,10 +2,10 @@
   1. Recreate the Home Section <>
   2. Create an intro animation <>
   3. Revamp the Tech Stack
-  4. Change the buttons
+  4. Change the buttons <>
   5. Add Experience section
   6. Get Subtle Background Images
-
+  7. Add Accessibilty features
   */
 
 window.onload = () => {
@@ -75,7 +75,8 @@ window.onload = () => {
   homeInfo.addEventListener("animationend", () => {
     homeInfoHeading.style.textWrap = "stable";
     homeInfoBio.style.textWrap = "stable";
-    document.querySelector("#home .info .info-wrapper").style.overflow = "visible";
+    document.querySelector("#home .info .info-wrapper").style.overflow =
+      "visible";
   });
 
   // Updates Variables on Screen Resize
