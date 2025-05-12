@@ -1,6 +1,5 @@
 # 💫 About Me:
-👋 Hi, I’m Flavio Sobbin 👀 I’m exploring the depths in software engineering<br><br>🔭 I’m currently learning JS, TS, Angular, and Shell scripting<br>👯 I’m looking to collaborate on both frontend and backend projects<br>🤝 I’m looking for help with using modern tools like PowerBI, SharePoint, etc.<br>⚡ Fun fact: I'm from the hardware world of engineering 🫠...
-
+👋 Hi, I’m Flavio Sobbin 👀 I’m exploring the depths in software engineering<br><br>🔭 I’m currently learning JS, TS, Angular, and Shell scripting<br>👯 I’m looking to collaborate on both frontend and backend projects<br>🤝 I’m looking for help with using modern tools like PowerBI, etc.<br>⚡ Fun fact: I'm from the hardware world of engineering 🫠...
 
 # 🌐 Socials:
 [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)](https://instagram.com/mr.ryt247)
