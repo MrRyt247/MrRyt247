@@ -14,8 +14,8 @@
   color-scheme: light dark;
   --progress-width: 0;
   --card-height: 4rem;
-  --cursor-x: 0;
-  --cursor-y: 0;
+  /* --cursor-x: 0;
+  --cursor-y: 0; */
 }
 
 html {
@@ -154,11 +154,6 @@ section {
     }
   }
 
-  hr {
-    border: solid 1px var(--font-color);
-    filter: blur(12.5px);
-  }
-
   h1 {
     font-size: clamp(2rem, 5.7vw, 3.5rem);
     color: var(--font-color);
@@ -205,7 +200,7 @@ section {
       transparent 100%
     );
     -webkit-mask: radial-gradient(
-      circle 120px at var(--x, -100px) var(--y, -100px),
+      circle 120px at var(--cursor-x, -100px) var(--cursor-y, -100px),
       var(--primary) 40%,
       transparent 100%
     );
@@ -381,6 +376,34 @@ section {
     padding: 0.5rem 0;
     gap: 0.75rem;
     margin-inline: auto;
+    position: relative;
+
+    .pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("assets/plus-pattern.svg");
+      background-size: 40px 40px;
+      background-repeat: repeat;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      mask: radial-gradient(
+        circle 30px at var(--cursor-x, -100px) var(--cursor-y, -100px),
+        var(--primary) 40%,
+        transparent 100%
+      );
+      -webkit-mask: radial-gradient(
+        circle 30px at var(--cursor-x) var(--cursor-y),
+        var(--primary) 40%,
+        transparent 100%
+      );
+    }
+
+    &:hover .pattern {
+      opacity: 0.8;
+    }
 
     .card {
       display: flex;

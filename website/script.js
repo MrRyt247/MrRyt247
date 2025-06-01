@@ -158,10 +158,27 @@ window.onload = () => {
     const y = e.clientY - rect.top;
 
     // Create reveal circle 20px from cursor
-    const revealX = x + 20;
-    const revealY = y + 20;
+    const offsetX = x + 20;
+    const offsetY = y + 20;
 
-    home.querySelector(".pattern").style.setProperty("--x", `${revealX}px`);
-    home.querySelector(".pattern").style.setProperty("--y", `${revealY}px`);
+    home
+      .querySelector(".pattern")
+      .style.setProperty("--cursor-x", `${offsetX}px`);
+    home
+      .querySelector(".pattern")
+      .style.setProperty("--cursor-y", `${offsetY}px`);
+  });
+
+  techStack.addEventListener("mousemove", (e) => {
+    const rect = techStack.querySelector(".body").getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    techStack
+      .querySelector(".pattern")
+      .style.setProperty("--cursor-x", `${x}px`);
+    techStack
+      .querySelector(".pattern")
+      .style.setProperty("--cursor-y", `${y}px`);
   });
 };
