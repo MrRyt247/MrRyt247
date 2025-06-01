@@ -14,6 +14,8 @@
   color-scheme: light dark;
   --progress-width: 0;
   --card-height: 4rem;
+  --cursor-x: 0;
+  --cursor-y: 0;
 }
 
 html {
@@ -184,12 +186,34 @@ section {
   padding-block: 0;
   background-color: var(--primary);
   box-shadow: 0 0 7px 4px var(--primary);
-  background-image: radial-gradient(var(--secondary) 15.2%, transparent 15.2%),
-    radial-gradient(var(--secondary) 15.2%, transparent 15.2%),
-    radial-gradient(var(--secondary) 15.2%, transparent 15.2%);
-  background-position: 0px 0px, 4px 4px;
-  background-size: 8px 8px;
-  animation: bg-animation 1s linear infinite alternate-reverse;
+  position: relative;
+
+  .pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("assets/circuit-pattern.svg");
+    background-size: 400px 400px;
+    background-repeat: repeat;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    mask: radial-gradient(
+      circle 120px at var(--cursor-x, -100px) var(--cursor-y, -100px),
+      var(--primary) 40%,
+      transparent 100%
+    );
+    -webkit-mask: radial-gradient(
+      circle 120px at var(--x, -100px) var(--y, -100px),
+      var(--primary) 40%,
+      transparent 100%
+    );
+  }
+
+  &:hover .pattern {
+    opacity: 1;
+  }
 
   .profile {
     width: clamp(7rem, 38vw, 11.5rem);
@@ -255,7 +279,7 @@ section {
         padding: 0.2 0.04rem;
         font-weight: bold;
         user-select: none;
-        background-color: #f90000a0;
+        background-color: var(--primary);
         border: solid 2px transparent;
         border-bottom: solid 2px var(--font-color);
         position: relative;
@@ -332,14 +356,14 @@ section {
 }
 
 #about {
-  max-width: 1088px;
+  max-width: 900px;
   user-select: contain;
 }
 
 #tech-stack {
   display: flex;
   flex-direction: column;
-  max-width: 1088px;
+  max-width: 900px;
 
   .header {
     button {
@@ -362,11 +386,11 @@ section {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-between;
+      justify-content: space-evenly;
       height: var(--card-height);
       aspect-ratio: 0.85;
       background-color: var(--card-bg);
-      box-shadow: 0 0.5rem 1.25rem 0.13rem var(--box-shadow-color);
+      box-shadow: 0 0.5rem 1.25rem -0.2rem var(--box-shadow-color);
       border: solid 1px var(--card-border);
       padding: 0.1rem 0.2rem;
       column-gap: 0.2rem;
@@ -382,7 +406,7 @@ section {
 
       .name {
         p {
-          font-size: 0.75rem;
+          font-size: 0.88rem;
           font-weight: 700;
           line-height: 0.63rem;
         }

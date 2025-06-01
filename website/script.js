@@ -149,4 +149,19 @@ window.onload = () => {
       navBar.style.padding = 0;
     }
   });
+
+  // Pattern reveal Effect
+
+  home.addEventListener("mousemove", (e) => {
+    const rect = home.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    // Create reveal circle 20px from cursor
+    const revealX = x + 20;
+    const revealY = y + 20;
+
+    home.querySelector(".pattern").style.setProperty("--x", `${revealX}px`);
+    home.querySelector(".pattern").style.setProperty("--y", `${revealY}px`);
+  });
 };
