@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { technologies } from '$lib/data/techStack';
+    import { technologies } from '$lib/data/techStack.ts';
 </script>
 
 <section>
