@@ -21,7 +21,7 @@
 			<div class="links">
 				<button type="button">
 					<p>Resume</p>
-					<Icon data={download} scale={1.5}/>
+					<Icon data={download} scale={1.5} />
 					<div class="tooltip">View Resume</div>
 				</button>
 				<ul class="socials">
