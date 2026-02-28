@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+}
+
+:root {
+    --primary: #f90200;
+    --secondary: #df0001;
+    --tertiary: #a31609a8;
+    --bg: light-dark(#f3f3f3, #1e1e1e);
+    --font-color: light-dark(#000, #eee);
+    color-scheme: light dark;
+}
+
+html {
+    scroll-behavior: smooth;
+    min-width: 350px;
+}
+
+body {
+    background-color: var(--bg);
+    font-family: Afacad, sans-serif;
+    font-weight: 600;
+    color: var(--font-color);
+    overflow-x: hidden;
+
+    button {
+        font-family: Afacad, sans-serif;
+        font-size: clamp(0.9rem, 1.7vw, 1.5rem);
+    }
+
+    ::selection {
+        background-color: var(--primary);
+        color: var(--bg);
+    }
+}
