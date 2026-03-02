@@ -6,7 +6,7 @@
 	import github from 'svelte-awesome/icons/github';
 </script>
 
-<section>
+<header>
 	<div class="profile">
 		<img src="src/lib/assets/user.jpg" alt="user" />
 	</div>
@@ -41,11 +41,12 @@
 			</div>
 		</div>
 	</div>
-</section>
+</header>
 
 <style>
-	section {
+	header {
 		height: 100dvh;
+		max-width: unset;
 		display: flex;
 		align-items: center;
 		justify-content: center;

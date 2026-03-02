@@ -17,29 +17,5 @@
 </section>
 
 <style>
-	section {
-		max-width: 1088px;
-		user-select: contain;
-	}
 
-	@keyframes heading-underline {
-		0%,
-		30% {
-			width: 0;
-		}
-		45%,
-		80% {
-			width: 100%;
-		}
-		95% {
-			width: 0;
-		}
-	}
-
-	@media (prefers-reduced-motion: no-preference) {
-		section h1::after {
-			animation: heading-underline ease-out both;
-			animation-timeline: view();
-		}
-	}
 </style>

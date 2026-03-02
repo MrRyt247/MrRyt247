@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { technologies } from '$lib/data/techStack';
+	import { technologies } from '../data/techStack.ts';
 </script>
 
 <section>
@@ -25,7 +25,6 @@
 	section {
 		display: flex;
 		flex-direction: column;
-		max-width: 1088px;
 
 		.stack {
 			display: flex;
