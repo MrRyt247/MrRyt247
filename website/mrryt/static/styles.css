@@ -20,13 +20,15 @@ html {
 body {
     background-color: var(--bg);
     font-family: Afacad, sans-serif;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--font-color);
     overflow-x: hidden;
 
     button {
         font-family: Afacad, sans-serif;
         font-size: clamp(0.9rem, 1.7vw, 1.5rem);
+        font-weight: bold;
+        user-select: none;
     }
 
     ::selection {
@@ -45,31 +47,6 @@ section {
         display: flex;
         justify-content: space-between;
         align-items: center;
-
-        button {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            column-gap: 1.5rem;
-            padding: 0.25rem 1rem;
-            font-weight: bold;
-            user-select: none;
-            background-color: var(--bg);
-            border: solid 1px;
-            transition: all 400ms ease-out;
-            overflow: hidden;
-
-            img {
-                height: 1.5rem;
-            }
-        }
-
-        button:hover {
-            cursor: pointer;
-            padding: 0.25rem 0.35rem;
-            column-gap: 0.1rem;
-            background-color: var(--primary);
-        }
     }
 
     hr {
@@ -96,7 +73,31 @@ section {
     }
 }
 
+button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 0.25rem;
+    padding: 0.125rem 0.625rem;
+    background-color: transparent;
+    border: solid 2px transparent;
+    border-bottom: solid 2px var(--font-color);
+    transition: all 400ms ease-out;
+    overflow: hidden;
+
+    &:hover {
+        cursor: pointer;
+        border: solid 2px;
+    }
+
+    a {
+        text-decoration: none;
+        color: var(--font-color);
+    }
+}
+
 @keyframes section-title-underline {
+
     0%,
     30% {
         width: 0;

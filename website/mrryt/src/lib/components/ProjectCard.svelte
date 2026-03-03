@@ -1,25 +1,30 @@
 <script lang="ts">
+	import Icon from 'svelte-awesome/components/Icon.svelte';
+	import download from 'svelte-awesome/icons/download';
 	let { data } = $props();
 	let id = data.id;
+	import { technologies } from '../data/techStack.ts';
 </script>
 
 <div class="card" style:flex-direction={id & 1 ? 'row' : 'row-reverse'}>
 	<div class="description">
-		<h3>{data.title}</h3>
+		<h2>{data.title}</h2>
 		<p>
 			{data.description}
 		</p>
 		<div class="tags">
 			{#each data.tags as tag}
-				<button type="button">{tag}</button>
+				<svelte:component this={technologies.find(tech => tech.name===tag)?.icon} style="font-size: 2rem" />
 			{/each}
 		</div>
         <div class="actions">
             <button type="button">
                 <a href={data.urls[0]} target="_blank" rel="noopener noreferrer">Live</a>
+				<!-- <Icon data={download} scale={1.5} /> -->
              </button>
              <button type="button">
-                <a href={data.urls[1]} target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href={data.urls[1]} target="_blank" rel="noopener noreferrer">Repo</a>
+				<!-- <Icon data={download} scale={1.5} /> -->
              </button>
         </div>
 	</div>
@@ -37,6 +42,21 @@
 
         .description {
             width: 50%;
+
+			h2 {
+				font-size: 2.25rem;
+			}
+			.tags {
+				display: flex;
+				justify-content: center;
+				column-gap: 0.3rem;
+				padding: 0.2rem 0;
+			}
+
+			.actions {
+				display: flex;
+				column-gap: 1rem;
+			}
         }
 
 		.icon {
@@ -48,22 +68,6 @@
 				width: 100%;
 				object-fit: cover;
 			}
-		}
-		h3 {
-			padding: 0 0.4rem;
-		}
-
-		p {
-			font-weight: 300;
-			color: var(--font-color);
-			padding: 0 0.8rem;
-		}
-
-		.tags {
-			display: flex;
-			justify-content: center;
-			column-gap: 0.3rem;
-			padding: 0.2rem 0;
 		}
 	}
 </style>

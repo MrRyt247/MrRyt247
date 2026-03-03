@@ -118,27 +118,13 @@
 				column-gap: 0.6rem;
 
 				button {
-					display: flex;
-					align-items: center;
-					justify-content: space-between;
-					column-gap: 0.2rem;
-					padding: 0.2 0.04rem;
-					font-weight: bold;
-					user-select: none;
 					background-color: #f90000a0;
-					border: solid 2px transparent;
-					border-bottom: solid 2px var(--font-color);
-					position: relative;
-					transition: all 400ms ease-out;
-				}
 
-				button:hover {
-					cursor: pointer;
-					border: solid 2px;
-
-					.tooltip {
-						visibility: visible;
-						opacity: 1;
+					&:hover {
+						.tooltip {
+							visibility: visible;
+							opacity: 1;
+						}
 					}
 				}
 
