@@ -1,4 +1,15 @@
 {
+	"socials": [
+		{
+			"name": "GitHub",
+			"url": "https://#"
+		},
+		{
+			"name": "LinkedIn",
+			"url": "https://#"
+		}
+
+	],
 	"projects": [
 		{
 			"title": "Shopping Cart App",

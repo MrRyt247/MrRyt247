@@ -1,9 +1,8 @@
 <script lang="ts">
+	import { socials } from '../data/home.ts';
 	import Icon from 'svelte-awesome/components/Icon.svelte';
 	import mapMarker from 'svelte-awesome/icons/mapMarker';
-	import download from 'svelte-awesome/icons/download';
-	import linkedin from 'svelte-awesome/icons/linkedin';
-	import github from 'svelte-awesome/icons/github';
+	import fileText from 'svelte-awesome/icons/fileText';
 </script>
 
 <header>
@@ -21,22 +20,24 @@
 			<div class="links">
 				<button type="button">
 					<p>Resume</p>
-					<Icon data={download} scale={1.5} />
+					<Icon data={fileText} scale={1.25} />
 					<div class="tooltip">View Resume</div>
 				</button>
 				<ul class="socials">
-					<li>
-						<a href="http://#">
-							<Icon data={github} scale={1.5} label="GitHub" color="var(--font-color)" />
-						</a>
-						<div class="tooltip">GitHub</div>
-					</li>
-					<li>
-						<a href="http://#">
-							<Icon data={linkedin} scale={1.5} label="LinkedIn" color="var(--font-color)" />
-						</a>
-						<div class="tooltip">LinkedIn</div>
-					</li>
+					{#each socials as social}
+						<li>
+							<a href={social.url}>
+								<Icon
+									data={social.icon}
+									scale={1.75}
+									label={social.label}
+									color="var(--font-color)"
+								/>
+								<div class="tooltip">{social.label}</div>
+							</a>
+							<div class="tooltip">{social.label}</div>
+						</li>
+					{/each}
 				</ul>
 			</div>
 		</div>
@@ -82,11 +83,12 @@
 		.info {
 			display: grid;
 			grid-template: 1fr / 0fr;
-			animation: wipe 800ms ease-out forwards;
+			animation: expand 800ms ease-out forwards;
 
 			.info-wrapper {
 				display: flex;
 				flex-direction: column;
+				padding-bottom: 2rem;
 				overflow: hidden;
 			}
 
@@ -118,7 +120,8 @@
 				column-gap: 0.6rem;
 
 				button {
-					background-color: #f90000a0;
+					position: relative;
+					overflow: unset;
 
 					&:hover {
 						.tooltip {
@@ -141,15 +144,16 @@
 						a {
 							display: flex;
 							width: clamp(1.2rem, 3vw, 1.8rem);
+							justify-content: center;
 							transition: all 400ms ease-out;
-						}
 
-						a:hover {
-							scale: 1.2;
+							&:hover {
+								scale: 1.2;
 
-							+ .tooltip {
-								visibility: visible;
-								opacity: 1;
+								+ .tooltip {
+									visibility: visible;
+									opacity: 1;
+								}
 							}
 						}
 					}
@@ -159,7 +163,7 @@
 					position: absolute;
 					top: 100%;
 					left: 50%;
-					transform: translate(-50%, 20%);
+					transform: translate(-50%, 10%);
 					width: max-content;
 					padding: 0.4rem 0.5rem;
 					font-size: 0.8rem;
@@ -179,7 +183,7 @@
 		}
 	}
 
-	@keyframes wipe {
+	@keyframes expand {
 		from {
 			grid-template-columns: 0fr;
 		}
@@ -189,19 +193,20 @@
 	}
 
 	@media screen and (max-width: 450px) {
-		section {
+		header {
 			flex-direction: column;
 			row-gap: 0.5rem;
 
 			.info {
 				grid-template: 0 / 1fr;
-				animation: wipe 1.2s ease-out forwards;
+				animation: expand 1.2s ease-out forwards;
 
 				.info-wrapper {
 					flex-direction: column;
 					row-gap: 0.1rem;
 					align-items: center;
 					overflow: hidden;
+					padding-bottom: 2rem;
 
 					h1 {
 						text-wrap: stable;
@@ -210,7 +215,7 @@
 			}
 		}
 
-		@keyframes wipe {
+		@keyframes expand {
 			from {
 				grid-template-rows: 0fr;
 			}

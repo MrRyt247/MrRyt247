@@ -8,7 +8,6 @@ import VscodeIconsFileTypeTypescriptOfficial from '~icons/vscode-icons/file-type
 import VscodeIconsFileTypeSvelte from '~icons/vscode-icons/file-type-svelte';
 import DeviconJquery from '~icons/devicon/jquery';
 
-
 export interface Technology {
     name: string;
 	icon: typeof VscodeIconsFileTypeHtml;
