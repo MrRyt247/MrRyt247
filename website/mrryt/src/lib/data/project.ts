@@ -5,6 +5,7 @@ export interface Project {
     tags: string[];
     thumbnail: string;
     urls: string[];
+	date: Date;
 }
 
 export const projects: Project[] = [
@@ -18,7 +19,8 @@ export const projects: Project[] = [
 		urls: [
 			'https://mrryt247.github.io/shopping-cart-app/',
 			'https://github.com/MrRyt247/shopping-cart-app'
-		]
+		],
+		date: new Date('2024-12')
 	},
 	{
 		id: 2,
@@ -27,6 +29,7 @@ export const projects: Project[] = [
 			'A Note-taking webapp created with Angular built in StackBlitz ⚡️. This application allows users to create, edit, and delete notes with a simple and intuitive interface. It also features a search function to quickly find specific notes and a responsive design for optimal use on both desktop and mobile devices.',
 		tags: ['HTML', 'CSS', 'TS', 'Angular'],
 		thumbnail: 'src/lib/assets/notes-thumbnail.jpeg',
-		urls: ['https://mrryt247.github.io/notes-app/', 'https://github.com/MrRyt247/notes-app']
+		urls: ['https://mrryt247.github.io/notes-app/', 'https://github.com/MrRyt247/notes-app'],
+		date: new Date('2023-08')
 	}
 ];

@@ -19,6 +19,7 @@
 	}
 
     p {
+		color: #ccc;
         font-weight: 500;
     }
 </style>

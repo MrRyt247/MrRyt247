@@ -14,7 +14,10 @@
 		</p>
 		<div class="tags">
 			{#each data.tags as tag}
-				<svelte:component this={technologies.find(tech => tech.name===tag)?.icon} style="font-size: 2rem" />
+				{@const Component = technologies.find(tech => tech.name===tag)?.icon}
+				{#if Component}
+					<Component style="font-size: 1.85rem" />
+				{/if}
 			{/each}
 		</div>
         <div class="actions">
@@ -36,21 +39,22 @@
 <style>
 	.card {
 		display: flex;
+		column-gap: 0.5rem;
 		border: outset 1px var(--secondary);
 		padding: 0.1rem;
 		box-shadow: 0 0 15px 2px #0002;
 
         .description {
             width: 50%;
+			align-content: center;
 
 			h2 {
 				font-size: 2.25rem;
 			}
 			.tags {
 				display: flex;
-				justify-content: center;
-				column-gap: 0.3rem;
-				padding: 0.2rem 0;
+				column-gap: 0.5rem;
+				padding: 0.5rem 0;
 			}
 
 			.actions {

@@ -9,7 +9,7 @@
 	</div>
 	<hr />
 	<div class="content">
-		{#each projects as project}
+		{#each [...projects].sort((a, b) => b.date.getTime() - a.date.getTime()) as project}
 			<ProjectCard data={project} />
 		{/each}
 	</div>
