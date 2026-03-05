@@ -3,6 +3,7 @@
 	import About from "$lib/components/About.svelte";
 	import TechStack from "$lib/components/TechStack.svelte";
 	import Project from "$lib/components/Project.svelte";
+	import Contact from "$lib/components/Contact.svelte";
 	import Footer from "$lib/components/Footer.svelte";
 </script>
 
@@ -10,4 +11,5 @@
 <About/>
 <TechStack/>
 <Project/>
+<Contact/>
 <Footer />

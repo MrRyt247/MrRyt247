@@ -1,5 +1,3 @@
-
-
 import github from 'svelte-awesome/icons/github';
 import linkedin from 'svelte-awesome/icons/linkedin';
 
@@ -21,4 +19,3 @@ export const socials: Icon[] = [
 		url: 'https://#'
 	}
 ];
-
