@@ -3,7 +3,7 @@
 	import { projects } from '../data/project.ts';
 </script>
 
-<section>
+<section id="projects">
 	<div class="header">
 		<h1>Projects</h1>
 	</div>

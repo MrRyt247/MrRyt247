@@ -5,7 +5,7 @@
 	import fileText from 'svelte-awesome/icons/fileText';
 </script>
 
-<header>
+<header id="home">
 	<div class="profile">
 		<img src="src/lib/assets/user.jpg" alt="user" />
 	</div>

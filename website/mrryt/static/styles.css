@@ -15,6 +15,7 @@
 html {
     scroll-behavior: smooth;
     min-width: 350px;
+    scroll-padding-top: 4rem;
 }
 
 body {
@@ -98,7 +99,6 @@ button {
 }
 
 @keyframes section-title-underline {
-
     0%,
     30% {
         width: 0;

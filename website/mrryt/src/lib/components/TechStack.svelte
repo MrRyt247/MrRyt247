@@ -2,7 +2,7 @@
 	import { technologies } from '../data/techStack.ts';
 </script>
 
-<section>
+<section id="tech-stack">
 	<div class="header">
 		<h1>Technology Stack</h1>
 	</div>

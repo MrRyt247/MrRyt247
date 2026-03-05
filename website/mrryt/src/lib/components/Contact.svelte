@@ -19,39 +19,51 @@
 	}
 </script>
 
-<section>
-	<div class="header">
-		<h1>Contact</h1>
-	</div>
-	<hr />
-	<div class="body">
-		<p>
-			Have a project in mind or just want to chat? Feel free to reach out! I'll get back to you <u
-				>as soon as possible</u
-			>!
-		</p>
-		<div class="contact-actions">
-			<a href="mailto:{email}" class="email-btn" aria-label="Send email">
-				<Icon data={envelope} scale={1.25} />
-				<span>Send Message</span>
-			</a>
-			<p>- or -</p>
-			<button
-				type="button"
-				class="email-btn"
-				onclick={copyEmail}
-				aria-label="Copy email to clipboard"
-			>
-				<span>{email}</span>
-				<Icon data={copied ? check : copy} scale={1.25} class="copy-icon" />
-				<div class="tooltip">{copied ? 'Copied!' : 'Copy email'}</div>
-			</button>
+<div class="wrapper">
+	<section>
+		<div class="header">
+			<h1>Contact</h1>
 		</div>
-	</div>
-</section>
+		<hr />
+		<div class="body">
+			<p>
+				Have a project in mind or just want to chat? Feel free to reach out! I'll get back to you <u
+					>as soon as possible</u
+				>!
+			</p>
+			<div class="contact-actions">
+				<a href="mailto:{email}" class="email-btn" aria-label="Send email">
+					<Icon data={envelope} scale={1.25} />
+					<span>Send Message</span>
+				</a>
+				<p>- or -</p>
+				<button
+					type="button"
+					class="email-btn"
+					onclick={copyEmail}
+					aria-label="Copy email to clipboard"
+				>
+					<span>{email}</span>
+					<Icon data={copied ? check : copy} scale={1.25} class="copy-icon" />
+					<div class="tooltip">{copied ? 'Copied!' : 'Copy email'}</div>
+				</button>
+			</div>
+		</div>
+	</section>
+</div>
 
 <style>
+	.wrapper {
+		background-color: #151515;
+		color: #ccc;
+	}
+
 	section {
+		h1 {
+
+			color: #ccc;
+		}
+
 		.body {
 			p {
 				margin-bottom: 0.5rem;
@@ -74,10 +86,10 @@
 					align-items: center;
 					column-gap: 0.75rem;
 					padding: 0.25rem 0.625rem;
-					color: var(--font-color);
+					color: #ccc;
 					background-color: transparent;
 					border: solid 2px transparent;
-					border-bottom: solid 2px var(--font-color);
+					border-bottom: solid 2px #ccc;
 					font-size: 1.25rem;
 					font-weight: bold;
 					text-decoration: none;

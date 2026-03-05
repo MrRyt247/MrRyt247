@@ -1,7 +1,7 @@
 <script lang="ts">
 </script>
 
-<section>
+<section id="about">
 	<div class="header">
 		<h1>About Me</h1>
 	</div>
