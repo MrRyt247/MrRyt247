@@ -2,7 +2,6 @@
 	// import Icon from 'svelte-awesome/components/Icon.svelte';
 	// import download from 'svelte-awesome/icons/download';
 	let { data, index } = $props();
-	// let id = data.id;
 	import { technologies } from '../data/techStack.ts';
 </script>
 
@@ -22,11 +21,11 @@
 		</div>
 		<div class="actions">
 			<button type="button">
-				<a href={data.urls[0]} target="_blank" rel="noopener noreferrer">Live</a>
+				<a href={data.urls.live} target="_blank" rel="noopener noreferrer">Live</a>
 				<!-- <Icon data={download} scale={1.5} /> -->
 			</button>
 			<button type="button">
-				<a href={data.urls[1]} target="_blank" rel="noopener noreferrer">Repo</a>
+				<a href={data.urls.repo} target="_blank" rel="noopener noreferrer">Repo</a>
 				<!-- <Icon data={download} scale={1.5} /> -->
 			</button>
 		</div>
@@ -51,7 +50,7 @@
 			0px 0px,
 			4px 4px;
 		background-size: 8px 8px; */
-		
+
 		&::after {
 			content: '';
 			position: absolute;
@@ -61,7 +60,6 @@
 			width: 0%;
 			height: 5px;
 			transition: width 300ms ease-out;
-
 		}
 		&:hover {
 			cursor: pointer;
@@ -70,7 +68,7 @@
 				width: 100%;
 			}
 		}
-		
+
 		.description {
 			flex: 1;
 			align-content: center;
