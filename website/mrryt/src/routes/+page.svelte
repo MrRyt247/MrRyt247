@@ -8,10 +8,18 @@
 	import Footer from '$lib/components/Footer.svelte';
 
 	let scrollProgress = $state(0);
+	let navVisible = $state(false);
 
 	function onScroll() {
 		const maxScroll = document.body.scrollHeight - window.innerHeight;
 		scrollProgress = (window.scrollY / maxScroll) * 100;
+
+		const homeElement = document.getElementById('home');
+		if (homeElement) {
+			const homeHeight = homeElement.offsetHeight;
+			const displayPoint = homeHeight * 0.75;
+			navVisible = window.scrollY > displayPoint;
+		}
 	}
 
 	$effect(() => {
@@ -20,7 +28,7 @@
 	});
 </script>
 
-<Nav {scrollProgress}/>
+<Nav {scrollProgress} visible={navVisible} />
 <Home />
 <About />
 <TechStack />

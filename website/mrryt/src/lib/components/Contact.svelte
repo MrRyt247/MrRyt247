@@ -24,7 +24,6 @@
 		<div class="header">
 			<h1>Contact</h1>
 		</div>
-		<hr />
 		<div class="body">
 			<p>
 				Have a project in mind or just want to chat? Feel free to reach out! I'll get back to you <u
@@ -60,8 +59,8 @@
 
 	section {
 		h1 {
-
 			color: #ccc;
+			text-decoration: underline 0.25rem;
 		}
 
 		.body {
@@ -137,6 +136,12 @@
 			visibility: hidden;
 			opacity: 0;
 			transition: all 500ms ease-in-out;
+		}
+	}
+
+	@media screen and (max-width: 450px) {
+		section {
+			padding-block: 2rem;
 		}
 	}
 </style>

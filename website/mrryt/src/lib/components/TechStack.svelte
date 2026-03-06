@@ -6,7 +6,6 @@
 	<div class="header">
 		<h1>Technology Stack</h1>
 	</div>
-	<hr />
 	<div class="body">
 		<div class="stack">
 			{#each technologies as tech}

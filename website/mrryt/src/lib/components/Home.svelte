@@ -20,7 +20,7 @@
 			<div class="links">
 				<button type="button">
 					<p>Resume</p>
-					<Icon data={fileText} scale={1.25} />
+					<Icon data={fileText} scale={1} />
 					<div class="tooltip">View Resume</div>
 				</button>
 				<ul class="socials">
@@ -33,7 +33,6 @@
 									label={social.label}
 									color="var(--font-color)"
 								/>
-								<div class="tooltip">{social.label}</div>
 							</a>
 							<div class="tooltip">{social.label}</div>
 						</li>
@@ -93,12 +92,12 @@
 			}
 
 			h1 {
-				font-size: clamp(1.8rem, 4.7vw, 4.5rem);
+				font-size: clamp(1.85rem, 4.7vw, 4.5rem);
 				line-height: clamp(1.7rem, 4.6vw, 4.25rem);
 				text-wrap: nowrap;
 			}
 			p {
-				font-size: clamp(0.8rem, 1.7vw, 1.5rem);
+				font-size: clamp(1.25rem, 1.7vw, 1.5rem);
 				font-weight: 500;
 				color: var(--font-color);
 				text-wrap: nowrap;
@@ -109,7 +108,7 @@
 				align-items: center;
 
 				p {
-					font-size: clamp(0.75rem, 1.4vw, 1.2rem);
+					font-size: clamp(1rem, 1.4vw, 1.2rem);
 					font-weight: 500;
 					color: var(--font-color);
 				}
@@ -195,7 +194,7 @@
 	@media screen and (max-width: 450px) {
 		header {
 			flex-direction: column;
-			row-gap: 0.5rem;
+			row-gap: 1rem;
 
 			.info {
 				grid-template: 0 / 1fr;

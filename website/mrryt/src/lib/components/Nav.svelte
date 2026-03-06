@@ -1,11 +1,11 @@
 <script lang="ts">
-	let { scrollProgress } = $props();
+	let { scrollProgress, visible } = $props();
 	import { socials } from '../data/home.ts';
 	import Icon from 'svelte-awesome/components/Icon.svelte';
 </script>
 
-<nav>
-	<h3 class="name">Flavio Sobbin</h3>
+<nav style:--nav-opacity={visible ? 1 : 0} style:--display={visible ? 'flex' : 'none'}>
+	<h2 class="name">Flavio Sobbin</h2>
 	<div class="ref-wrapper">
 		<ul class="ref">
 			<li><a href="#home">Home</a></li>
@@ -19,7 +19,7 @@
 		{#each socials as social}
 			<li>
 				<a href={social.url} target="_blank" rel="noopener noreferrer">
-					<Icon data={social.icon} scale={1.75} label={social.label} color="var(--font-color)" />
+					<Icon data={social.icon} scale={2} label={social.label} color="var(--font-color)" />
 				</a>
 			</li>
 		{/each}
@@ -28,19 +28,25 @@
 
 <style>
 	nav {
-		display: flex;
+		display: var(--display);
 		align-items: center;
 		justify-content: space-between;
 		background-color: var(--primary);
 		box-shadow: 0 0 7px 4px var(--primary);
-		height: 3.5dvh;
+		height: 5dvh;
 		padding: 0.2rem 1.75rem 0.15rem;
 		position: sticky;
 		top: 0;
 		z-index: 2;
-		/* opacity: 0; */
-		transition: all 400ms ease-in-out;
+		opacity: var(--nav-opacity);
+		transition: opacity 400ms ease-in-out;
+		transition: display 10ms ease;
 		transition-behavior: allow-discrete;
+
+		.name {
+			font-size: 2rem;
+			line-height: 2rem;
+		}
 
 		ul {
 			display: flex;
@@ -55,6 +61,7 @@
 				a {
 					text-decoration: none;
 					color: var(--font-color);
+					font-size: 1.5rem;
 				}
 			}
 		}

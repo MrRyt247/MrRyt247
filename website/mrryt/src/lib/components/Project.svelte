@@ -7,10 +7,9 @@
 	<div class="header">
 		<h1>Projects</h1>
 	</div>
-	<hr />
 	<div class="content">
-		{#each [...projects].sort((a, b) => b.date.getTime() - a.date.getTime()) as project}
-			<ProjectCard data={project} />
+		{#each [...projects].sort((a, b) => b.date.getTime() - a.date.getTime()) as project, index}
+			<ProjectCard data={project} {index}/>
 		{/each}
 	</div>
 </section>
@@ -25,8 +24,9 @@
 		.content {
             display: flex;
             flex-direction: column;
-			row-gap: 1rem;
+			row-gap: 2rem;
 			background-color: var(--bg);
+			margin-top: 0.5rem;
 		}
 	}
 </style>

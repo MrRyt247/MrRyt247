@@ -1,12 +1,12 @@
 <script lang="ts">
-	import Icon from 'svelte-awesome/components/Icon.svelte';
-	import download from 'svelte-awesome/icons/download';
-	let { data } = $props();
-	let id = data.id;
+	// import Icon from 'svelte-awesome/components/Icon.svelte';
+	// import download from 'svelte-awesome/icons/download';
+	let { data, index } = $props();
+	// let id = data.id;
 	import { technologies } from '../data/techStack.ts';
 </script>
 
-<div class="card" style:flex-direction={id & 1 ? 'row' : 'row-reverse'}>
+<div class="card" style:flex-direction={(index + 1) & 1 ? 'row' : 'row-reverse'}>
 	<div class="description">
 		<h2>{data.title}</h2>
 		<p>
@@ -14,22 +14,22 @@
 		</p>
 		<div class="tags">
 			{#each data.tags as tag}
-				{@const Component = technologies.find(tech => tech.name===tag)?.icon}
+				{@const Component = technologies.find((tech) => tech.name === tag)?.icon}
 				{#if Component}
 					<Component style="font-size: 1.85rem" />
 				{/if}
 			{/each}
 		</div>
-        <div class="actions">
-            <button type="button">
-                <a href={data.urls[0]} target="_blank" rel="noopener noreferrer">Live</a>
+		<div class="actions">
+			<button type="button">
+				<a href={data.urls[0]} target="_blank" rel="noopener noreferrer">Live</a>
 				<!-- <Icon data={download} scale={1.5} /> -->
-             </button>
-             <button type="button">
-                <a href={data.urls[1]} target="_blank" rel="noopener noreferrer">Repo</a>
+			</button>
+			<button type="button">
+				<a href={data.urls[1]} target="_blank" rel="noopener noreferrer">Repo</a>
 				<!-- <Icon data={download} scale={1.5} /> -->
-             </button>
-        </div>
+			</button>
+		</div>
 	</div>
 	<div class="icon">
 		<img src={data.thumbnail} alt="shopping-cart" />
@@ -39,13 +39,40 @@
 <style>
 	.card {
 		display: flex;
-		column-gap: 0.5rem;
-		border: outset 1px var(--secondary);
-		padding: 0.1rem;
-		box-shadow: 0 0 15px 2px #0002;
+		column-gap: 1rem;
+		position: relative;
 
-        .description {
-            width: 50%;
+		/* Dotted background to be considered */
+		/* background-image:
+			radial-gradient(#ddd 15.2%, transparent 15.2%),
+			radial-gradient(#ddd 15.2%, transparent 15.2%),
+			radial-gradient(#ddd 15.2%, transparent 15.2%);
+		background-position:
+			0px 0px,
+			4px 4px;
+		background-size: 8px 8px; */
+		
+		&::after {
+			content: '';
+			position: absolute;
+			inset: 100% 0 0;
+			transform: translateY(-50% + 5px);
+			background-color: var(--primary);
+			width: 0%;
+			height: 5px;
+			transition: width 300ms ease-out;
+
+		}
+		&:hover {
+			cursor: pointer;
+
+			&::after {
+				width: 100%;
+			}
+		}
+		
+		.description {
+			flex: 1;
 			align-content: center;
 
 			h2 {
@@ -61,12 +88,13 @@
 				display: flex;
 				column-gap: 1rem;
 			}
-        }
+		}
 
 		.icon {
-			height: 16.5rem;
-			aspect-ratio: 1;
+			flex: 1;
+			height: 19rem;
 			overflow: hidden;
+			aspect-ratio: 16 / 9;
 
 			img {
 				width: 100%;
