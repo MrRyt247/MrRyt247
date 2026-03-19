@@ -2,6 +2,7 @@
 	let { scrollProgress, visible } = $props();
 	import { socials } from '../data/home.ts';
 	import Icon from 'svelte-awesome/components/Icon.svelte';
+
 </script>
 
 <nav style:--nav-opacity={visible ? 1 : 0} style:--display={visible ? 'flex' : 'none'}>
@@ -16,7 +17,7 @@
 		<span id="scroll-progress-bar" style:--scroll-progress={scrollProgress + '%'}></span>
 	</div>
 	<ul class="socials">
-		{#each socials as social}
+		{#each socials as social (social.url)}
 			<li>
 				<a href={social.url} target="_blank" rel="noopener noreferrer">
 					<Icon data={social.icon} scale={2} label={social.label} color="var(--font-color)" />

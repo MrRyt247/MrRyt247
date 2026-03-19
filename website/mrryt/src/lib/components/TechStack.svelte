@@ -8,7 +8,7 @@
 	</div>
 	<div class="body">
 		<div class="stack">
-			{#each technologies as tech}
+			{#each technologies as tech (tech)}
 				<div class="card">
 					<svelte:component this={tech.icon} style="font-size:2.5rem" />
 					<div class="info">

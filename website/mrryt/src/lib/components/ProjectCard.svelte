@@ -3,9 +3,25 @@
 	// import download from 'svelte-awesome/icons/download';
 	let { data, index } = $props();
 	import { technologies } from '../data/techStack.ts';
+	import { goto } from '$app/navigation';
+
+	const urlName = data.title.toLowerCase().replace(/\s+/g, '-');
+
+	function handleNavigate(route: string) {
+		goto(`projects/${route}`, {
+			state: {
+				data
+			}
+		});
+	}
 </script>
 
-<div class="card" style:flex-direction={(index + 1) & 1 ? 'row' : 'row-reverse'}>
+<div
+	class="card"
+	role="button"
+	style:flex-direction={(index + 1) & 1 ? 'row' : 'row-reverse'}
+	onclick={() => handleNavigate(urlName)}
+>
 	<div class="description">
 		<h2>{data.title}</h2>
 		<p>
@@ -21,7 +37,7 @@
 		</div>
 		<div class="actions">
 			<button type="button">
-				<a href={data.urls.live} target="_blank" rel="noopener noreferrer">Live</a>
+				<button href={data.urls.live} target="_blank" rel="noopener noreferrer">Live</a>
 				<!-- <Icon data={download} scale={1.5} /> -->
 			</button>
 			<button type="button">
