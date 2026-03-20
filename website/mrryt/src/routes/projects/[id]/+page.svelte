@@ -2,7 +2,7 @@
 	import { page } from '$app/state';
 	import { technologies } from '$lib/data/techStack';
 
-	let { data } = page.state || {};
+	let { data } = page.state;
 </script>
 
 <h1>{data.title}</h1>

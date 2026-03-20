@@ -1,20 +1,67 @@
 <script lang="ts">
-	let { scrollProgress, visible } = $props();
+	let { visible } = $props();
 	import { socials } from '../data/home.ts';
 	import Icon from 'svelte-awesome/components/Icon.svelte';
 
+	const navItems = [
+		{ id: 'home', label: 'Home' },
+		{ id: 'about', label: 'About' },
+		{ id: 'tech-stack', label: 'Tech Stack' },
+		{ id: 'projects', label: 'Projects' }
+	];
+
+	function getActiveSection(): string {
+		const sections = navItems.map((item) => document.getElementById(item.id));
+		const scrollPos = window.scrollY + window.innerHeight * 0.3;
+
+		for (let i = sections.length - 1; i >= 0; i--) {
+			const section = sections[i];
+			if (section && section.offsetTop <= scrollPos) {
+				return navItems[i].id;
+			}
+		}
+		return 'home';
+	}
+
+	let activeSection = $state(getActiveSection());
+
+	function updateActiveSection() {
+		activeSection = getActiveSection();
+	}
+
+	$effect(() => {
+		window.addEventListener('scroll', updateActiveSection);
+		updateActiveSection();
+		return () => window.removeEventListener('scroll', updateActiveSection);
+	});
+
+	function getFontSize(itemId: string): string {
+		if (itemId === activeSection) {
+			return '1.8rem';
+		}
+		return '1.3rem';
+	}
+
+	function getFontWgt(itemId: string): string {
+		if (itemId === activeSection) {
+			return '800';
+		}
+		return '500';
+	}
 </script>
 
 <nav style:--nav-opacity={visible ? 1 : 0} style:--display={visible ? 'flex' : 'none'}>
 	<h2 class="name">Flavio Sobbin</h2>
 	<div class="ref-wrapper">
 		<ul class="ref">
-			<li><a href="#home">Home</a></li>
-			<li><a href="#about">About</a></li>
-			<li><a href="#tech-stack">Tech Stack</a></li>
-			<li><a href="#projects">Projects</a></li>
+			{#each navItems as item}
+				<li>
+					<a href={'#' + item.id} style:font-size={getFontSize(item.id)} style:font-weight={getFontWgt(item.id)}>
+						{item.label}
+					</a>
+				</li>
+			{/each}
 		</ul>
-		<span id="scroll-progress-bar" style:--scroll-progress={scrollProgress + '%'}></span>
 	</div>
 	<ul class="socials">
 		{#each socials as social}
@@ -62,7 +109,7 @@
 				a {
 					text-decoration: none;
 					color: var(--font-color);
-					font-size: 1.5rem;
+					transition: font-weight, font-size 300ms ease-out;
 				}
 			}
 		}
@@ -70,23 +117,6 @@
 		.ref-wrapper {
 			display: flex;
 			flex-direction: column;
-
-			span {
-				height: 0.5px;
-				position: relative;
-				background-color: var(--font-color);
-
-				&::before {
-					content: '';
-					position: absolute;
-					height: 5px;
-					width: 5px;
-					border-radius: 50%;
-					inset: -2.5px var(--scroll-progress);
-					background-color: var(--font-color);
-					transition: inset 250ms ease-in-out;
-				}
-			}
 		}
 
 		.socials {
@@ -109,9 +139,6 @@
 				.ref {
 					justify-content: space-between;
 					column-gap: unset;
-				}
-				#scroll-progress-bar::before {
-					inset: -2.5px var(--scroll-progress);
 				}
 			}
 		}

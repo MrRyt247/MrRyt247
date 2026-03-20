@@ -28,7 +28,7 @@
 	});
 </script>
 
-<Nav {scrollProgress} visible={navVisible} />
+<Nav visible={navVisible} />
 <Home />
 <About />
 <TechStack />
