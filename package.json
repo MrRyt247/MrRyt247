@@ -1,9 +1,0 @@
-{
-  "devDependencies": {
-    "@iconify-json/vscode-icons": "^1.2.44",
-    "unplugin-icons": "^23.0.1"
-  },
-  "dependencies": {
-    "svelte-awesome": "^3.3.5"
-  }
-}
