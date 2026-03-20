@@ -5,14 +5,9 @@
 
 	import { technologies } from '../data/techStack.ts';
 	import { goto } from '$app/navigation';
-	const urlName = data.title.toLowerCase().replace(/\s+/g, '-');
 
-	function handleNavigate(route: string) {
-		goto(`projects/${route}`, {
-			state: {
-				data
-			}
-		});
+	function handleNavigate(url: string) {
+		goto(`/projects/${url}`);
 	}
 </script>
 
@@ -20,7 +15,7 @@
 	class="card"
 	role="button"
 	style:flex-direction={(index + 1) & 1 ? 'row' : 'row-reverse'}
-	onclick={() => handleNavigate(urlName)}
+	onclick={() => handleNavigate(data.title.toLowerCase().replace(/\s+/g, '-'))}
 >
 	<div class="description">
 		<h2>{data.title}</h2>

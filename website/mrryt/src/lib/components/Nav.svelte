@@ -1,5 +1,5 @@
 <script lang="ts">
-	let { visible } = $props();
+	let { visible, scrollProgress } = $props();
 	import { socials } from '../data/home.ts';
 	import Icon from 'svelte-awesome/components/Icon.svelte';
 
@@ -10,43 +10,23 @@
 		{ id: 'projects', label: 'Projects' }
 	];
 
-	function getActiveSection(): string {
-		const sections = navItems.map((item) => document.getElementById(item.id));
-		const scrollPos = window.scrollY + window.innerHeight * 0.3;
-
-		for (let i = sections.length - 1; i >= 0; i--) {
-			const section = sections[i];
-			if (section && section.offsetTop <= scrollPos) {
-				return navItems[i].id;
-			}
-		}
-		return 'home';
+	function getActiveIndex(): number {
+		const numSections = navItems.length;
+		const sectionSize = 100 / numSections;
+		return Math.min(
+			Math.floor(scrollProgress / sectionSize),
+			numSections - 1
+		);
 	}
 
-	let activeSection = $state(getActiveSection());
+	let activeIndex = $derived(getActiveIndex());
 
-	function updateActiveSection() {
-		activeSection = getActiveSection();
+	function getFontSize(index: number): string {
+		return index === activeIndex ? '1.8rem' : '1.3rem';
 	}
 
-	$effect(() => {
-		window.addEventListener('scroll', updateActiveSection);
-		updateActiveSection();
-		return () => window.removeEventListener('scroll', updateActiveSection);
-	});
-
-	function getFontSize(itemId: string): string {
-		if (itemId === activeSection) {
-			return '1.8rem';
-		}
-		return '1.3rem';
-	}
-
-	function getFontWgt(itemId: string): string {
-		if (itemId === activeSection) {
-			return '800';
-		}
-		return '500';
+	function getFontWgt(index: number): string {
+		return index === activeIndex ? '800' : '500';
 	}
 </script>
 
@@ -54,9 +34,13 @@
 	<h2 class="name">Flavio Sobbin</h2>
 	<div class="ref-wrapper">
 		<ul class="ref">
-			{#each navItems as item}
+			{#each navItems as item, index}
 				<li>
-					<a href={'#' + item.id} style:font-size={getFontSize(item.id)} style:font-weight={getFontWgt(item.id)}>
+					<a
+						href={'#' + item.id}
+						style:font-size={getFontSize(index)}
+						style:font-weight={getFontWgt(index)}
+					>
 						{item.label}
 					</a>
 				</li>
@@ -109,7 +93,9 @@
 				a {
 					text-decoration: none;
 					color: var(--font-color);
-					transition: font-weight, font-size 300ms ease-out;
+					transition:
+						font-weight,
+						font-size 300ms ease-out;
 				}
 			}
 		}

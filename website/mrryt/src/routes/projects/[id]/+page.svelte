@@ -1,27 +1,28 @@
 <script lang="ts">
-	import { page } from '$app/state';
 	import { technologies } from '$lib/data/techStack';
+	import type { PageData } from './$types';
 
-	let { data } = page.state;
+	let { data }: { data: PageData } = $props();
+	let project = $derived(data.project);
 </script>
 
-<h1>{data.title}</h1>
+<h1>{project.title}</h1>
 
-<img src={'../../../' + data.thumbnail} alt={data.title} />
+<img src={`../../../${project.thumbnail}`} alt={project.title} />
 
 <h2>Overview</h2>
-<p>{data.description}</p>
+<p>{project.description}</p>
 
-{#if data.keyFeatures}
+{#if project.keyFeatures}
 	<h2>Key Features</h2>
-	<p>{data.keyFeatures}</p>
+	<p>{project.keyFeatures}</p>
 {/if}
 
 <h2>Results</h2>
 
 <h2>Technologies Used</h2>
 <div class="tags">
-	{#each data.tags as tag (tag)}
+	{#each project.tags as tag (tag)}
 		{@const Component = technologies.find((tech) => tech.name === tag)?.icon}
 		{#if Component}
 			<Component style="font-size: 1.85rem" />
@@ -29,9 +30,9 @@
 	{/each}
 </div>
 
-{#if data.reflections}
+{#if project.reflections}
 	<h2>Reflection</h2>
-	<p>{data.reflections}</p>
+	<p>{project.reflections}</p>
 {/if}
 
 <style>
