@@ -17,7 +17,7 @@
 		<span id="scroll-progress-bar" style:--scroll-progress={scrollProgress + '%'}></span>
 	</div>
 	<ul class="socials">
-		{#each socials as social (social.url)}
+		{#each socials as social}
 			<li>
 				<a href={social.url} target="_blank" rel="noopener noreferrer">
 					<Icon data={social.icon} scale={2} label={social.label} color="var(--font-color)" />

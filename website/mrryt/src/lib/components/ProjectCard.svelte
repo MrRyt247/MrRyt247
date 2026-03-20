@@ -2,9 +2,9 @@
 	// import Icon from 'svelte-awesome/components/Icon.svelte';
 	// import download from 'svelte-awesome/icons/download';
 	let { data, index } = $props();
+
 	import { technologies } from '../data/techStack.ts';
 	import { goto } from '$app/navigation';
-
 	const urlName = data.title.toLowerCase().replace(/\s+/g, '-');
 
 	function handleNavigate(route: string) {
@@ -37,7 +37,7 @@
 		</div>
 		<div class="actions">
 			<button type="button">
-				<button href={data.urls.live} target="_blank" rel="noopener noreferrer">Live</a>
+				<a href={data.urls.live} target="_blank" rel="noopener noreferrer">Live</a>
 				<!-- <Icon data={download} scale={1.5} /> -->
 			</button>
 			<button type="button">
@@ -114,6 +114,11 @@
 				width: 100%;
 				object-fit: cover;
 			}
+		}
+	}
+	@media screen and (max-width: 450px) {
+		.card {
+			flex-direction: column;
 		}
 	}
 </style>

@@ -8,7 +8,7 @@
 		<h1>Projects</h1>
 	</div>
 	<div class="content">
-		{#each [...projects].sort((a, b) => b.date.getTime() - a.date.getTime()) as project, index (index)}
+		{#each [...projects].sort((a, b) => b.date.getTime() - a.date.getTime()) as project, index}
 			<ProjectCard data={project} {index}/>
 		{/each}
 	</div>

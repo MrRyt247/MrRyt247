@@ -24,6 +24,10 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
 # dev
+.vscode/
 assets/
 design/
+.claude/
+QWEN.md
+CLAUDE.md
 

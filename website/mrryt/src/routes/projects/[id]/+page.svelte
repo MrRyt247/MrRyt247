@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { technologies } from '$lib/data/techStack.ts';
+	import { technologies } from '$lib/data/techStack';
 
 	let { data } = page.state || {};
 </script>
