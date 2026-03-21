@@ -1,22 +1,17 @@
 <script lang="ts">
 	// import Icon from 'svelte-awesome/components/Icon.svelte';
 	// import download from 'svelte-awesome/icons/download';
-	let { data, index } = $props();
+	let { data, index, isMobile } = $props();
 
 	import { technologies } from '../data/techStack.ts';
 	import { goto } from '$app/navigation';
 
-	function handleNavigate(url: string) {
-		goto(`/projects/${url}`);
+	function handleNavigate() {
+		goto(`/projects/${data.title.toLowerCase().replace(/\s+/g, '-')}`);
 	}
 </script>
 
-<div
-	class="card"
-	role="button"
-	style:flex-direction={(index + 1) & 1 ? 'row' : 'row-reverse'}
-	onclick={() => handleNavigate(data.title.toLowerCase().replace(/\s+/g, '-'))}
->
+<div class="card" style:flex-direction={isMobile ? 'column-reverse' : (index + 1) & 1 ? 'row' : 'row-reverse'} onclick={handleNavigate} >
 	<div class="description">
 		<h2>{data.title}</h2>
 		<p>
@@ -51,17 +46,7 @@
 		display: flex;
 		column-gap: 1rem;
 		position: relative;
-
-		/* Dotted background to be considered */
-		/* background-image:
-			radial-gradient(#ddd 15.2%, transparent 15.2%),
-			radial-gradient(#ddd 15.2%, transparent 15.2%),
-			radial-gradient(#ddd 15.2%, transparent 15.2%);
-		background-position:
-			0px 0px,
-			4px 4px;
-		background-size: 8px 8px; */
-
+	
 		&::after {
 			content: '';
 			position: absolute;
@@ -113,7 +98,30 @@
 	}
 	@media screen and (max-width: 450px) {
 		.card {
-			flex-direction: column;
+			row-gap: 1rem;
+
+			.icon {
+				width: 100%;
+				height: 12rem;
+			}
+
+			.description {
+				h2 {
+					font-size: 1.5rem;
+				}
+
+				p {
+					font-size: 0.95rem;
+				}
+
+				.tags {
+					justify-content: center;
+				}
+
+				.actions {
+					justify-content: center;
+				}
+			}
 		}
 	}
 </style>

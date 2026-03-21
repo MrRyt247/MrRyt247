@@ -9,6 +9,12 @@
 
 	let scrollProgress = $state(0);
 	let navVisible = $state(false);
+	let isMobile = $state(false);
+
+	function getScreenSize() {
+		const screenWidth = window.innerWidth;
+		isMobile = screenWidth <= 450;
+	}
 
 	function onScroll() {
 		const maxScroll = document.body.scrollHeight - window.innerHeight;
@@ -24,7 +30,12 @@
 
 	$effect(() => {
 		window.addEventListener('scroll', onScroll);
-		return () => window.removeEventListener('scroll', onScroll);
+		window.addEventListener('resize', getScreenSize);
+		return () => {window.removeEventListener('scroll', onScroll);
+		window.removeEventListener('resize', getScreenSize);
+
+		}
+		
 	});
 </script>
 
@@ -32,6 +43,6 @@
 <Home />
 <About />
 <TechStack />
-<Project />
+<Project {isMobile} />
 <Contact />
 <Footer />
