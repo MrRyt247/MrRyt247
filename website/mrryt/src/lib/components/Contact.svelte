@@ -24,7 +24,7 @@
 		<div class="header">
 			<h1>Contact</h1>
 		</div>
-		<div class="body">
+		<div class="content">
 			<p>
 				Have a project in mind or just want to chat? Feel free to reach out! I'll get back to you <u
 					>as soon as possible</u
@@ -63,7 +63,7 @@
 			text-decoration: underline 0.25rem;
 		}
 
-		.body {
+		.content {
 			p {
 				margin-bottom: 0.5rem;
 				font-size: 1.25rem;

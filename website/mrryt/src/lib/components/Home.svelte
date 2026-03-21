@@ -9,7 +9,7 @@
 	<div class="profile">
 		<img src="src/lib/assets/user.jpg" alt="user" />
 	</div>
-	<div class="info">
+	<div class="content">
 		<div class="info-wrapper">
 			<h1>Flavio Nana Badu Sobbin</h1>
 			<p>Full Stack Web Developer</p>
@@ -79,7 +79,7 @@
 			}
 		}
 
-		.info {
+		.content {
 			display: grid;
 			grid-template: 1fr / 0fr;
 			animation: expand 800ms ease-out forwards;
@@ -196,7 +196,7 @@
 			flex-direction: column;
 			row-gap: 1rem;
 
-			.info {
+			.content {
 				grid-template: 0 / 1fr;
 				animation: expand 1.2s ease-out forwards;
 

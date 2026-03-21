@@ -6,7 +6,7 @@
 	<div class="header">
 		<h1>Technology Stack</h1>
 	</div>
-	<div class="body">
+	<div class="content">
 		<div class="stack">
 			{#each technologies as tech}
 				<div class="card">
@@ -48,6 +48,10 @@
 				transition: all 200ms ease-out;
 				background-color: var(--bg);
 
+				&:hover {
+					border: solid 1px transparent;
+				}
+
 				.info {
 					p {
 						font-size: 12px;
@@ -55,10 +59,6 @@
 						line-height: 10px;
 					}
 				}
-			}
-
-			.card:hover {
-				border: solid 1px transparent;
 			}
 		}
 	}

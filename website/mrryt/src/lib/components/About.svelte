@@ -5,7 +5,7 @@
 	<div class="header">
 		<h1>About Me</h1>
 	</div>
-	<div class="body">
+	<div class="content">
 		<p>
 			I am a dedicated and detail-oriented Computer Engineering student with a strong academic
 			standing in First Class. Skilled in web development, programming languages, database

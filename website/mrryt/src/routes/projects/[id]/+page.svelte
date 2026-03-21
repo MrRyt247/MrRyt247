@@ -10,7 +10,7 @@
 	<h1>{project.title}</h1>
 	<figure>
 		<img src={`../../../${project.thumbnail}`} alt={project.title} />
-		<figcaption>A frontpage of the project</figcaption>
+		<figcaption>{project.figcaption}</figcaption>
 	</figure>
 	<article>
 		<h2>Overview</h2>
