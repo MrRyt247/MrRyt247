@@ -11,7 +11,11 @@
 	}
 </script>
 
-<div class="card" style:flex-direction={isMobile ? 'column-reverse' : (index + 1) & 1 ? 'row' : 'row-reverse'} onclick={handleNavigate} >
+<div
+	class="card"
+	style:flex-direction={isMobile ? 'column-reverse' : (index + 1) & 1 ? 'row' : 'row-reverse'}
+	onclick={handleNavigate}
+>
 	<div class="description">
 		<h2>{data.title}</h2>
 		<p>
@@ -46,7 +50,9 @@
 		display: flex;
 		column-gap: 1rem;
 		position: relative;
-	
+		border: solid 1px var(--primary);
+		border-inline: none;
+
 		&::after {
 			content: '';
 			position: absolute;

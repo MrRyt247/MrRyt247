@@ -9,10 +9,13 @@
 		<h1>Projects</h1>
 	</div>
 	<div class="content">
-		{#each [...projects].sort((a, b) => b.date.getTime() - a.date.getTime()) as project, index}
+		{#each [...projects].sort((a, b) => b.date.getTime() - a.date.getTime()).slice(0, 5) as project, index}
 			<ProjectCard data={project} {index} {isMobile}/>
 		{/each}
 	</div>
+	<button type="button">
+		<a href="/projects">View More</a>
+	</button>
 </section>
 
 <style>
@@ -27,7 +30,12 @@
             flex-direction: column;
 			row-gap: 2rem;
 			background-color: var(--bg);
-			margin-top: 0.5rem;
+			margin: 0.5rem;
+		}
+		button {
+			width: fit-content;
+			align-self: center;
+			margin: 0.5rem;
 		}
 	}
 </style>
