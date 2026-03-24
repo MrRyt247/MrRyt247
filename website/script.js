@@ -149,4 +149,36 @@ window.onload = () => {
       navBar.style.padding = 0;
     }
   });
+
+  // Pattern reveal Effect
+
+  home.addEventListener("mousemove", (e) => {
+    const rect = home.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    // Create reveal circle 20px from cursor
+    const offsetX = x + 20;
+    const offsetY = y + 20;
+
+    home
+      .querySelector(".pattern")
+      .style.setProperty("--cursor-x", `${offsetX}px`);
+    home
+      .querySelector(".pattern")
+      .style.setProperty("--cursor-y", `${offsetY}px`);
+  });
+
+  techStack.addEventListener("mousemove", (e) => {
+    const rect = techStack.querySelector(".body").getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    techStack
+      .querySelector(".pattern")
+      .style.setProperty("--cursor-x", `${x}px`);
+    techStack
+      .querySelector(".pattern")
+      .style.setProperty("--cursor-y", `${y}px`);
+  });
 };

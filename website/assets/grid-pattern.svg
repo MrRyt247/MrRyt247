@@ -1,0 +1,26 @@
+<svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+  <!-- Central plus shapes (rotated 45°) -->
+  <g transform="rotate(45 90 90)">
+    <path d="M85 70h10v40h-10zM70 85h40v10H70z" fill="#9C92AC" fill-opacity="0.4"/>
+  </g>
+  
+  <!-- Corner plus shapes (rotated 45°) -->
+  <g transform="rotate(45 9 9)">
+    <path d="M4 -1h2v8h-2zM-1 4h8v2h-8z" fill="#9C92AC" fill-opacity="0.4"/>
+  </g>
+  
+  <g transform="rotate(45 171 9)">
+    <path d="M166 -1h2v8h-2zM161 4h8v2h-8z" fill="#9C92AC" fill-opacity="0.4"/>
+  </g>
+  
+  <g transform="rotate(45 9 171)">
+    <path d="M4 161h2v8h-2zM-1 166h8v2h-8z" fill="#9C92AC" fill-opacity="0.4"/>
+  </g>
+  
+  <g transform="rotate(45 171 171)">
+    <path d="M166 161h2v8h-2zM161 166h8v2h-8z" fill="#9C92AC" fill-opacity="0.4"/>
+  </g>
+  
+  <!-- Diagonal lines and edge circles -->
+  <path d="M152.933 25.653l1.414 1.414-33.94 33.942-1.416-1.416 33.943-33.94zm1.414 127.28l-1.414 1.414-33.942-33.94 1.416-1.416 33.94 33.943zm-127.28 1.414l-1.414-1.414 33.94-33.942 1.416 1.416-33.943 33.94zm-1.414-127.28l1.414-1.414 33.942 33.94-1.416 1.416-33.94-33.943zM0 85c2.21 0 4 1.79 4 4s-1.79 4-4 4v-8zm180 0c-2.21 0-4 1.79-4 4s1.79 4 4 4v-8zM94 0c0 2.21-1.79 4-4 4s-4-1.79-4 4h8zm0 180c0-2.21-1.79-4-4-4s-4 1.79-4 4h8z" fill="#9C92AC" fill-opacity="0.4" fill-rule="evenodd"/>
+</svg>

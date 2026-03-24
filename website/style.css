@@ -8,8 +8,14 @@
   --tertiary: #a31609a8;
   --bg: light-dark(#f3f3f3, #1e1e1e);
   --font-color: light-dark(#000, #eee);
+  --card-bg: light-dark(#eeee, #777e);
+  --card-border: light-dark(#0007, #eee7);
+  --box-shadow-color: light-dark(#0002, #fff2);
   color-scheme: light dark;
   --progress-width: 0;
+  --card-height: 4rem;
+  /* --cursor-x: 0;
+  --cursor-y: 0; */
 }
 
 html {
@@ -148,11 +154,6 @@ section {
     }
   }
 
-  hr {
-    border: solid 1px var(--font-color);
-    filter: blur(12.5px);
-  }
-
   h1 {
     font-size: clamp(2rem, 5.7vw, 3.5rem);
     color: var(--font-color);
@@ -180,12 +181,34 @@ section {
   padding-block: 0;
   background-color: var(--primary);
   box-shadow: 0 0 7px 4px var(--primary);
-  background-image: radial-gradient(var(--secondary) 15.2%, transparent 15.2%),
-    radial-gradient(var(--secondary) 15.2%, transparent 15.2%),
-    radial-gradient(var(--secondary) 15.2%, transparent 15.2%);
-  background-position: 0px 0px, 4px 4px;
-  background-size: 8px 8px;
-  animation: bg-animation 1s linear infinite alternate-reverse;
+  position: relative;
+
+  .pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("assets/circuit-pattern.svg");
+    background-size: 400px 400px;
+    background-repeat: repeat;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    mask: radial-gradient(
+      circle 120px at var(--cursor-x, -100px) var(--cursor-y, -100px),
+      var(--primary) 40%,
+      transparent 100%
+    );
+    -webkit-mask: radial-gradient(
+      circle 120px at var(--cursor-x, -100px) var(--cursor-y, -100px),
+      var(--primary) 40%,
+      transparent 100%
+    );
+  }
+
+  &:hover .pattern {
+    opacity: 1;
+  }
 
   .profile {
     width: clamp(7rem, 38vw, 11.5rem);
@@ -251,7 +274,7 @@ section {
         padding: 0.2 0.04rem;
         font-weight: bold;
         user-select: none;
-        background-color: #f90000a0;
+        background-color: var(--primary);
         border: solid 2px transparent;
         border-bottom: solid 2px var(--font-color);
         position: relative;
@@ -321,21 +344,21 @@ section {
       }
     }
   }
-  ::selection {
+  &::selection {
     background-color: var(--tertiary);
     text-decoration: underline 1px;
   }
 }
 
 #about {
-  max-width: 1088px;
+  max-width: 900px;
   user-select: contain;
 }
 
 #tech-stack {
   display: flex;
   flex-direction: column;
-  max-width: 1088px;
+  max-width: 900px;
 
   .header {
     button {
@@ -351,44 +374,71 @@ section {
     display: flex;
     flex-wrap: wrap;
     padding: 0.5rem 0;
-    gap: 0.5rem;
+    gap: 0.75rem;
     margin-inline: auto;
+    position: relative;
+
+    .pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("assets/plus-pattern.svg");
+      background-size: 40px 40px;
+      background-repeat: repeat;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      mask: radial-gradient(
+        circle 30px at var(--cursor-x, -100px) var(--cursor-y, -100px),
+        var(--primary) 40%,
+        transparent 100%
+      );
+      -webkit-mask: radial-gradient(
+        circle 30px at var(--cursor-x) var(--cursor-y),
+        var(--primary) 40%,
+        transparent 100%
+      );
+    }
+
+    &:hover .pattern {
+      opacity: 0.8;
+    }
 
     .card {
       display: flex;
       flex-direction: column;
       align-items: center;
-      /* background-color: var(--bg); */
-      background-color: #dacece;
-      height: 3.8rem;
+      justify-content: space-evenly;
+      height: var(--card-height);
       aspect-ratio: 0.85;
-      border: solid 1px var(--font-color);
-      padding: 0 0.1rem;
+      background-color: var(--card-bg);
+      box-shadow: 0 0.5rem 1.25rem -0.2rem var(--box-shadow-color);
+      border: solid 1px var(--card-border);
+      padding: 0.1rem 0.2rem;
       column-gap: 0.2rem;
       position: relative;
       user-select: none;
       cursor: pointer;
       transition: all 200ms ease-out;
-      background-color: var(--bg);
 
       img {
-        height: calc(3.6rem - 15px);
+        height: calc(var(--card-height) - 1rem);
         aspect-ratio: 1;
-        padding: 2px 0;
       }
 
-      .info {
+      .name {
         p {
-          font-size: 12px;
+          font-size: 0.88rem;
           font-weight: 700;
-          line-height: 10px;
+          line-height: 0.63rem;
         }
       }
     }
 
     .card:hover::before {
       content: "";
-      height: calc(3.8rem + 5px);
+      height: calc(var(--card-height) + 0.5rem);
       position: absolute;
       inset: -2.5px;
       z-index: -1;
@@ -473,13 +523,18 @@ section {
 }
 
 footer {
-  background-color: var(--primary);
-  box-shadow: 0 0 7px 4px var(--secondary);
+  background-color: #272727;
+  /* box-shadow: 0 0 7px 4px var(--secondary); */
   padding: 0.2rem 1.5rem;
   text-align: center;
 
   a {
     text-decoration: none;
+  }
+
+  p {
+    color: #aaa;
+    font-weight: lighter;
   }
 }
 
