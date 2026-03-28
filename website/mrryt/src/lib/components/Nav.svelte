@@ -1,14 +1,7 @@
 <script lang="ts">
-	let { visible, scrollProgress } = $props();
+	let { navItems, visible, scrollProgress } = $props();
 	import { socials } from '../data/home.ts';
 	import Icon from 'svelte-awesome/components/Icon.svelte';
-
-	const navItems = [
-		{ id: 'home', label: 'Home' },
-		{ id: 'about', label: 'About' },
-		{ id: 'tech-stack', label: 'Tech Stack' },
-		{ id: 'projects', label: 'Projects' }
-	];
 
 	function getActiveIndex(): number {
 		const numSections = navItems.length;

@@ -43,7 +43,7 @@
 				height: 3.8rem;
 				aspect-ratio: 0.85;
 				border: solid 1px var(--font-color);
-				padding: 0 0.1rem;
+				padding: 0.2rem;
 				column-gap: 0.2rem;
 				position: relative;
 				user-select: none;

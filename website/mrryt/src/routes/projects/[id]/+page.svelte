@@ -1,23 +1,47 @@
 <script lang="ts">
+	import Nav from '$lib/components/Nav.svelte';
 	import { technologies } from '$lib/data/techStack';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
 	let project = $derived(data.project);
+
+	let scrollProgress = $state(0);
+	let navVisible = $state(true);
+
+	const navItems = [
+		{ id: 'home', label: 'Home' },
+		{ id: 'overview', label: 'Overview' },
+		{ id: 'features', label: 'Features' },
+		{ id: 'results', label: 'Results' },
+		{ id: 'tech-stack', label: 'Tech Stack' }
+	];
+
+	function onScroll() {
+		const maxScroll = document.body.scrollHeight - window.innerHeight;
+		scrollProgress = (window.scrollY / maxScroll) * 100;
+	}
+
+	$effect(() => {
+		window.addEventListener('scroll', onScroll);
+		return () => window.removeEventListener('scroll', onScroll);
+	});
 </script>
 
+<Nav {navItems} {scrollProgress} visible={navVisible} />
 <section>
-	<h1>{project.title}</h1>
+	<h1 id={'#' + navItems[0].id}>{project.title}</h1>
 	<figure>
 		<img src={`../../../${project.thumbnail}`} alt={project.title} />
 		<figcaption>{project.figcaption}</figcaption>
 	</figure>
-	<article>
+
+	<article id={'#' + navItems[1].id}>
 		<h2>Overview</h2>
 		<p>{project.description}</p>
 	</article>
 
-	<article>
+	<article id={'#' + navItems[2].id}>
 		{#if project.keyFeatures}
 			<h2>Key Features</h2>
 			<ul>
@@ -28,12 +52,12 @@
 		{/if}
 	</article>
 
-	<article>
+	<article id={'#' + navItems[3].id}>
 		<h2>Results</h2>
 		<p>{project.results}</p>
 	</article>
 
-	<article>
+	<article id={'#' + navItems[4].id}>
 		<h2>Technologies Used</h2>
 		<div class="tags">
 			{#each project.tags as tag (tag)}
@@ -74,5 +98,11 @@
 			font-style: italic;
 			filter: grayscale(60%);
 		}
+	}
+
+	.tags {
+		display: flex;
+		column-gap: 0.5rem;
+		padding: 0.5rem 0;
 	}
 </style>
