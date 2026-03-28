@@ -30,7 +30,7 @@
 			{/each}
 		</div>
 		<div class="actions">
-			<button type="button" disabled={data.urls.live ? 'true': 'false'}>
+			<button type="button" disabled={data.urls.live === null ? true : false}>
 				<a href={data.urls.live} target="_blank" rel="noopener noreferrer">Live</a>
 				<!-- <Icon data={download} scale={1.5} /> -->
 			</button>
@@ -87,6 +87,16 @@
 			.actions {
 				display: flex;
 				column-gap: 1rem;
+
+				button:disabled {
+					cursor: not-allowed;
+					border-bottom-color: lightgrey;
+
+					a {
+						color: lightgrey;
+						text-decoration: line-through;
+					}
+				}
 			}
 		}
 
@@ -100,10 +110,6 @@
 				width: 100%;
 				object-fit: cover;
 			}
-		}
-
-		button:disabled {
-			cursor: not-allowed;
 		}
 	}
 	@media screen and (max-width: 450px) {
