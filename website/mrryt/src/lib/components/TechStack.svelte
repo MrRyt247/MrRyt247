@@ -8,7 +8,7 @@
 	</div>
 	<div class="content">
 		<div class="stack">
-			{#each technologies as tech}
+			{#each technologies.slice(0, 11) as tech}
 				<div class="card">
 					<svelte:component this={tech.icon} style="font-size:2.5rem" />
 					<div class="info">
@@ -18,6 +18,9 @@
 			{/each}
 		</div>
 	</div>
+	<button type="button">
+		<a href="/tech-stack">View More</a>
+	</button>
 </section>
 
 <style>
@@ -60,6 +63,12 @@
 					}
 				}
 			}
+		}
+
+		button {
+			width: fit-content;
+			align-self: center;
+			margin: 0.5rem;
 		}
 	}
 </style>

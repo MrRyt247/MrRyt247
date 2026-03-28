@@ -1,7 +1,7 @@
 <script lang="ts">
 	let { isMobile } = $props();
 	import ProjectCard from './ProjectCard.svelte';
-	import { projects } from '../data/project.ts';
+	import { projects } from '../data/project.ts';	
 </script>
 
 <section id="projects">
@@ -32,6 +32,7 @@
 			background-color: var(--bg);
 			margin: 0.5rem;
 		}
+		
 		button {
 			width: fit-content;
 			align-self: center;

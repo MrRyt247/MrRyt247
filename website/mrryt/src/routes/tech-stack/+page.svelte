@@ -8,9 +8,13 @@
     const webappTech = technologies.filter(tech => webapp.includes(tech.name))
 
     const programming = ['Python', 'C', 'C++'];
-    const scripting = ['Bash', 'Pwsh'];
+    const programmingTech = technologies.filter(tech => programming.includes(tech.name))
+
+    const scripting = ['Bash', 'Powershell'];
+    const scriptingTech = technologies.filter(tech => scripting.includes(tech.name))
 
     const database = ['PostgreSQL', 'MongoDB'];
+    const databaseTech = technologies.filter(tech => database.includes(tech.name))
 
 
 </script>
@@ -43,10 +47,52 @@
             </div>
         </article>
 
-        <article>
+		<article>
             <p>Webapp Technology Stack</p>
             <div class="stack">
                 {#each webappTech as tech}
+                    <div class="card">
+                        <svelte:component this={tech.icon} style="font-size: 2.5rem"/>
+                        <div class="info">
+                            <p>{tech.name}</p>
+                        </div>
+                    </div>
+                {/each}
+            </div>
+        </article>
+
+        <article>
+            <p>Programming Technology Stack</p>
+            <div class="stack">
+                {#each programmingTech as tech}
+                    <div class="card">
+                        <svelte:component this={tech.icon} style="font-size: 2.5rem"/>
+                        <div class="info">
+                            <p>{tech.name}</p>
+                        </div>
+                    </div>
+                {/each}
+            </div>
+        </article>
+
+		<article>
+            <p>Scripting Technology Stack</p>
+            <div class="stack">
+                {#each scriptingTech as tech}
+                    <div class="card">
+                        <svelte:component this={tech.icon} style="font-size: 2.5rem"/>
+                        <div class="info">
+                            <p>{tech.name}</p>
+                        </div>
+                    </div>
+                {/each}
+            </div>
+        </article>
+
+		<article>
+            <p>Database Technology Stack</p>
+            <div class="stack">
+                {#each databaseTech as tech}
                     <div class="card">
                         <svelte:component this={tech.icon} style="font-size: 2.5rem"/>
                         <div class="info">

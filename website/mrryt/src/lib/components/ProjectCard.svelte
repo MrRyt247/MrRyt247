@@ -30,7 +30,7 @@
 			{/each}
 		</div>
 		<div class="actions">
-			<button type="button">
+			<button type="button" disabled={data.urls.live ? 'true': 'false'}>
 				<a href={data.urls.live} target="_blank" rel="noopener noreferrer">Live</a>
 				<!-- <Icon data={download} scale={1.5} /> -->
 			</button>
@@ -100,6 +100,10 @@
 				width: 100%;
 				object-fit: cover;
 			}
+		}
+
+		button:disabled {
+			cursor: not-allowed;
 		}
 	}
 	@media screen and (max-width: 450px) {
