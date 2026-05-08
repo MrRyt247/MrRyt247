@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+}
+
+:root {
+    --primary: #f90200;
+    --secondary: #df0001;
+    --tertiary: #a31609a8;
+    --bg: light-dark(#f3f3f3, #1e1e1e);
+    --font-color: light-dark(#000, #eee);
+    --max-text-width: 1088px;
+    color-scheme: light dark;
+}
+
+html {
+    scroll-behavior: smooth;
+    min-width: 350px;
+    scroll-padding-top: 4rem;
+}
+
+body {
+    background-color: var(--bg);
+    font-family: Afacad, sans-serif;
+    font-weight: 500;
+    color: var(--font-color);
+    overflow-x: hidden;
+
+    button {
+        font-family: Afacad, sans-serif;
+        font-size: clamp(0.9rem, 1.7vw, 1.5rem);
+        font-weight: bold;
+        user-select: none;
+    }
+
+    ::selection {
+        background-color: var(--primary);
+        color: var(--bg);
+    }
+}
+
+section {
+    padding: 4rem 2rem;
+    margin-inline: auto;
+    max-width: var(--max-text-width);
+    user-select: contain;
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    h1 {
+        font-size: clamp(2rem, 5.7vw, 3.5rem);
+        color: var(--font-color);
+        text-wrap: balance;
+        position: relative;
+        /* -webkit-text-stroke: .1px var(--bg); */
+    }
+
+    h1::after {
+        content: "";
+        position: absolute;
+        inset: 80% 0;
+        transform: translateY(50%);
+        background-color: var(--font-color);
+        width: 0;
+        height: 5px;
+        z-index: -1;
+    }
+}
+
+button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 0.5rem;
+    padding: 0.125rem 0.625rem;
+    background-color: transparent;
+    border: solid 2px transparent;
+    border-bottom: solid 2px var(--font-color);
+    transition: all 400ms ease-out;
+    overflow: hidden;
+
+    &:hover {
+        cursor: pointer;
+        border: solid 2px;
+    }
+
+    a {
+        text-decoration: none;
+        color: var(--font-color);
+    }
+}
+
+@keyframes section-title-underline {
+    0%,
+    45% {
+        width: 0;
+    }
+
+    45%,
+    87.5% {
+        width: 100%;
+    }
+
+    95%, 100% {
+        width: 0;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    section h1::after {
+        animation: section-title-underline ease-out both;
+        animation-timeline: view();
+    }
+}
