@@ -25,23 +25,23 @@
 	$effect(() => {
 		window.addEventListener('scroll', onScroll);
 		return () => window.removeEventListener('scroll', onScroll);
-	});
+	});	
 </script>
 
 <Nav {navItems} {scrollProgress} visible={navVisible} />
 <section>
-	<h1 id={'#' + navItems[0].id}>{project.title}</h1>
+	<h1 id={navItems[0].id}>{project.title}</h1>
 	<figure>
 		<img src={`../../../${project.thumbnail}`} alt={project.title} />
 		<figcaption>{project.figcaption}</figcaption>
 	</figure>
 
-	<article id={'#' + navItems[1].id}>
+	<article id={navItems[1].id}>
 		<h2>Overview</h2>
 		<p>{project.description}</p>
 	</article>
 
-	<article id={'#' + navItems[2].id}>
+	<article id={navItems[2].id}>
 		{#if project.keyFeatures}
 			<h2>Key Features</h2>
 			<ul>
@@ -52,12 +52,20 @@
 		{/if}
 	</article>
 
-	<article id={'#' + navItems[3].id}>
+	{#if project.images}
+		<h2>Gallery</h2>
+		<figure>
+			<img src={`../../../${project.images[0]}`} alt={project.title} />
+			<figcaption>ProofMint UI</figcaption>
+		</figure>
+	{/if}
+
+	<article id={navItems[3].id}>
 		<h2>Results</h2>
 		<p>{project.results}</p>
 	</article>
 
-	<article id={'#' + navItems[4].id}>
+	<article id={navItems[4].id}>
 		<h2>Technologies Used</h2>
 		<div class="tags">
 			{#each project.tags as tag (tag)}
@@ -75,11 +83,24 @@
 			<p>{project.reflections}</p>
 		{/if}
 	</article>
+
+	<article class="actions">
+		<button type="button" disabled={project.urls.live === null ? true : false}>
+			<a href={project.urls.live} target="_blank" rel="noopener noreferrer">Live</a>
+		</button>
+		<button type="button">
+			<a href={project.urls.repo} target="_blank" rel="noopener noreferrer">Repo</a>
+		</button>
+	</article>
 </section>
 
 <style>
-	section > * {
-		margin-bottom: 1rem;
+	section {
+		padding-top: 1rem;
+		
+		& > * {
+			margin-bottom: 1rem;
+		}
 	}
 	h1 {
 		text-decoration: underline;
@@ -104,5 +125,19 @@
 		display: flex;
 		column-gap: 0.5rem;
 		padding: 0.5rem 0;
+	}
+	.actions {
+		display: flex;
+		column-gap: 1rem;
+
+		button:disabled {
+			cursor: not-allowed;
+			border-bottom-color: lightgrey;
+
+			a {
+				color: lightgrey;
+				text-decoration: line-through;
+			}
+		}
 	}
 </style>

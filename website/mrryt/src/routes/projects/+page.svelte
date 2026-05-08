@@ -26,6 +26,12 @@
 
 <style>
 	section {
+		padding-top: 1rem;
+
+		& > * {
+			margin-bottom: 1rem;
+		}
+
 		h1 {
 			text-decoration: underline;
 

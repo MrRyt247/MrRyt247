@@ -20,18 +20,22 @@
 <section>
 	<h1>Technology Stack</h1>
 	<div class="content">
-		<div class="stack">
-			{#each technologies as tech}
-				<div class="card">
-					<svelte:component this={tech.icon} style="font-size:2.5rem" />
-					<div class="info">
-						<p>{tech.name}</p>
+		<article>
+			<p>These are tools I have come across in my development journey:</p>
+			<div class="stack">
+				{#each technologies as tech}
+					<div class="card">
+						<svelte:component this={tech.icon} style="font-size:2.5rem" />
+						<div class="info">
+							<p>{tech.name}</p>
+						</div>
 					</div>
-				</div>
-			{/each}
-		</div>
+				{/each}
+			</div>
+		</article>
 
 		<article>
+			<h3>Preferred tools in:</h3>
 			<p>Web Technology Stack</p>
 			<div class="stack">
 				{#each webTech as tech}
@@ -74,7 +78,7 @@
 		</article>
 
 		<article>
-			<p>Scripting Technology Stack</p>
+			<p>Shell Scripting Technology Stack</p>
 			<div class="stack">
 				{#each scriptingTech as tech}
 					<div class="card">
@@ -105,6 +109,12 @@
 
 <style>
 	section {
+		padding-top: 1rem;
+
+		& > * {
+			margin-bottom: 1rem;
+		}
+
 		h1 {
 			text-decoration: underline;
 
