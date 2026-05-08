@@ -8,7 +8,8 @@
 
 	let scrollProgress = $state(0);
 	let navVisible = $state(true);
-
+	let currentIndex = $state(0);
+	
 	const navItems = [
 		{ id: 'home', label: 'Home' },
 		{ id: 'overview', label: 'Overview' },
@@ -16,16 +17,27 @@
 		{ id: 'results', label: 'Results' },
 		{ id: 'tech-stack', label: 'Tech Stack' }
 	];
-
+	
 	function onScroll() {
 		const maxScroll = document.body.scrollHeight - window.innerHeight;
 		scrollProgress = (window.scrollY / maxScroll) * 100;
+	}
+	
+	function nextSlide() {
+		if (!project.images) return;
+		currentIndex = (currentIndex + 1) % project.images.length;
 	}
 
 	$effect(() => {
 		window.addEventListener('scroll', onScroll);
 		return () => window.removeEventListener('scroll', onScroll);
 	});	
+
+	$effect(() => {
+		if (!project.images?.length) return;
+		const timer = setInterval(nextSlide, 10000);
+		return () => clearInterval(timer);
+	});
 </script>
 
 <Nav {navItems} {scrollProgress} visible={navVisible} />
@@ -53,11 +65,28 @@
 	</article>
 
 	{#if project.images}
-		<h2>Gallery</h2>
-		<figure>
-			<img src={`../../../${project.images[0]}`} alt={project.title} />
-			<figcaption>ProofMint UI</figcaption>
-		</figure>
+		<article id="gallery">
+			<h2>Gallery</h2>
+			<div class="carousel">
+				<div class="track" style="transform: translateX(-{currentIndex * 100}%)">
+					{#each project.images as image, i}
+						<figure>
+							<img src={`../../../${image}`} alt={`${project.title} — slide ${i + 1}`} />
+						</figure>
+					{/each}
+				</div>
+				<div class="dots">
+					{#each project.images as _, i}
+						<button
+							type="button"
+							class:active={i === currentIndex}
+							onclick={() => (currentIndex = i)}
+							aria-label={`Go to slide ${i + 1}`}
+						></button>
+					{/each}
+				</div>
+			</div>
+		</article>
 	{/if}
 
 	<article id={navItems[3].id}>
@@ -118,6 +147,51 @@
 			text-align: center;
 			font-style: italic;
 			filter: grayscale(60%);
+		}
+	}
+
+	.carousel {
+		position: relative;
+		overflow: hidden;
+		width: 100%;
+
+		.track {
+			display: flex;
+			transition: transform 0.5s ease;
+			will-change: transform;
+
+			figure {
+				min-width: 100%;
+				margin: 0;
+
+				img {
+					display: block;
+					width: 100%;
+					aspect-ratio: 16 / 9;
+				}
+			}
+		}
+
+		.dots {
+			display: flex;
+			justify-content: center;
+			gap: 0.5rem;
+			padding: 0.6rem 0 0.2rem;
+
+			button {
+				width: 0.25rem;
+				height: 0.25rem;
+				border: none;
+				background: var(--tertiary);
+				cursor: pointer;
+				padding: 0;
+				transition: background 0.2s, transform 0.2s;
+
+				&.active {
+					background: var(--primary);
+					transform: scale(1.5);
+				}
+			}
 		}
 	}
 
