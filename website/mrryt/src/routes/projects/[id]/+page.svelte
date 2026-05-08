@@ -14,7 +14,6 @@
 		{ id: 'home', label: 'Home' },
 		{ id: 'overview', label: 'Overview' },
 		{ id: 'features', label: 'Features' },
-		{ id: 'results', label: 'Results' },
 		{ id: 'tech-stack', label: 'Tech Stack' }
 	];
 	
@@ -44,7 +43,7 @@
 <section>
 	<h1 id={navItems[0].id}>{project.title}</h1>
 	<figure>
-		<img src={`../../../${project.thumbnail}`} alt={project.title} />
+		<img src={project.thumbnail} alt={project.title} />
 		<figcaption>{project.figcaption}</figcaption>
 	</figure>
 
@@ -71,7 +70,7 @@
 				<div class="track" style="transform: translateX(-{currentIndex * 100}%)">
 					{#each project.images as image, i}
 						<figure>
-							<img src={`../../../${image}`} alt={`${project.title} — slide ${i + 1}`} />
+							<img src={image} alt={`${project.title} — slide ${i + 1}`} />
 						</figure>
 					{/each}
 				</div>
@@ -89,12 +88,12 @@
 		</article>
 	{/if}
 
-	<article id={navItems[3].id}>
+	<article>
 		<h2>Results</h2>
 		<p>{project.results}</p>
 	</article>
 
-	<article id={navItems[4].id}>
+	<article id={navItems[3].id}>
 		<h2>Technologies Used</h2>
 		<div class="tags">
 			{#each project.tags as tag (tag)}

@@ -21,7 +21,7 @@ export const projects: Project[] = [
 		description:
 			'A lightweight, responsive shopping cart web application built with HTML, CSS, and jQuery. This application allows users to create and manage shopping sessions, track purchases, and view shopping history instead of relying on mobile calculators with support for discounts and persistent data storage.',
 		tags: ['HTML', 'CSS', 'JS', 'jQuery'],
-		thumbnail: 'src/lib/assets/thumbnails/sc-thumbnail.webp',
+		thumbnail: '/thumbnails/sc-thumbnail.webp',
 		figcaption: 'The front page of Shopping Cart App',
 		keyFeatures: ['Discount calculator', 'Data persistence'],
 		results:
@@ -38,7 +38,7 @@ export const projects: Project[] = [
 		description:
 			'A Note-taking webapp created with Angular built in StackBlitz ⚡️. This application allows users to create, edit, and delete notes with a simple and intuitive interface. It also features a search function to quickly find specific notes and a responsive design for optimal use on both desktop and mobile devices.',
 		tags: ['HTML', 'CSS', 'TS', 'Angular'],
-		thumbnail: 'src/lib/assets/thumbnails/notes-thumbnail.webp',
+		thumbnail: '/thumbnails/notes-thumbnail.webp',
 		figcaption: 'The front page of Notes App',
 		keyFeatures: ['Add notes', 'Edit notes', 'Delete notes', 'Search notes'],
 		results: 'A simple note-taking app that allows users to manage their notes.',
@@ -55,7 +55,7 @@ export const projects: Project[] = [
 		description:
 			'A Rock Paper Scissors game built with Angular and TypeScript. This game allows users to play against the computer, with a simple and intuitive interface. The game keeps track of the score and provides feedback on the outcome of each round. It is a practice challenge by Frontend Mentor.',
 		tags: ['HTML', 'CSS', 'TS', 'Angular'],
-		thumbnail: 'src/lib/assets/thumbnails/rps-thumbnail.webp',
+		thumbnail: '/thumbnails/rps-thumbnail.webp',
 		figcaption: 'The front page of Rock Paper Scissors Game',
 		keyFeatures: ['Play against computer', 'Track score', 'Persist score with localStorage'],
 		results: 'A simple Rock Paper Scissors game that allows users to play against the computer.',
@@ -72,7 +72,7 @@ export const projects: Project[] = [
 		description:
 			'A Frontend Mentor Practice Challenge where I cloned a responsive website for space tourism information.',
 		tags: ['HTML', 'CSS', 'JS'],
-		thumbnail: 'src/lib/assets/thumbnails/st-thumbnail.webp',
+		thumbnail: '/thumbnails/st-thumbnail.webp',
 		figcaption: 'The front page of Space Tourism Website',
 		keyFeatures: ['Responsive design', 'Interactive elements'],
 		results: 'A responsive website for space tourism information.',
@@ -89,16 +89,16 @@ export const projects: Project[] = [
 		description:
 			'A Decentralized Credentialing MVP. This project was a Web3 challenge at ACES 2025 CodeFest.',
 		tags: ['Nextjs', 'Hardhat', 'Solidity', 'TS'],
-		thumbnail: 'src/lib/assets/thumbnails/proofmint/landing_home-dark.webp',
+		thumbnail: '/thumbnails/proofmint/landing_home-dark.webp',
 		images: [
-			'src/lib/assets/thumbnails/proofmint/landing_home-dark.webp',
-			'src/lib/assets/thumbnails/proofmint/landing_hiw-dark.webp',
-			'src/lib/assets/thumbnails/proofmint/landing_features-dark.webp',
-			'src/lib/assets/thumbnails/proofmint/landing_cta-dark.webp',
-			'src/lib/assets/thumbnails/proofmint/signup-dark.webp',
-			'src/lib/assets/thumbnails/proofmint/dashboard-dark.webp',
-			'src/lib/assets/thumbnails/proofmint/dashboard-light.webp',
-			'src/lib/assets/thumbnails/proofmint/create_proof-dark.webp'
+			'/thumbnails/proofmint/landing_home-dark.webp',
+			'/thumbnails/proofmint/landing_hiw-dark.webp',
+			'/thumbnails/proofmint/landing_features-dark.webp',
+			'/thumbnails/proofmint/landing_cta-dark.webp',
+			'/thumbnails/proofmint/signup-dark.webp',
+			'/thumbnails/proofmint/dashboard-dark.webp',
+			'/thumbnails/proofmint/dashboard-light.webp',
+			'/thumbnails/proofmint/create_proof-dark.webp'
 		],
 		figcaption: 'The Landing page of ProofMint dapp',
 		keyFeatures: [
