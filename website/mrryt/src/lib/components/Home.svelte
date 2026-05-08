@@ -7,7 +7,7 @@
 
 <header id="home">
 	<div class="profile">
-		<img src="src/lib/assets/dev.webp" alt="dev behind all this" />
+		<img src="/dev.webp" alt="dev behind all this" />
 	</div>
 	<div class="content">
 		<div class="info-wrapper">
