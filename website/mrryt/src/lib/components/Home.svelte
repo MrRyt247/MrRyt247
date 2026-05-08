@@ -18,7 +18,7 @@
 				<p>Ghana</p>
 			</div>
 			<div class="links">
-				<button type="button">
+				<button type="button" onclick={() => window.open('/Resume.pdf', '_blank')}>
 					<p>Resume</p>
 					<Icon data={fileText} scale={1} />
 					<div class="tooltip">View Resume</div>
@@ -26,7 +26,7 @@
 				<ul class="socials">
 					{#each socials as social}
 						<li>
-							<a href={social.url}>
+							<a href={social.url} target="_blank" rel="noopener noreferrer">
 								<Icon
 									data={social.icon}
 									scale={1.75}

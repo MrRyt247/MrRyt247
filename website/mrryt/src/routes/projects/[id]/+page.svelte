@@ -2,6 +2,9 @@
 	import Nav from '$lib/components/Nav.svelte';
 	import { technologies } from '$lib/data/techStack';
 	import type { PageData } from './$types';
+	import Icon from 'svelte-awesome/components/Icon.svelte';
+	import play from 'svelte-awesome/icons/play';
+	import github from 'svelte-awesome/icons/github';
 
 	let { data }: { data: PageData } = $props();
 	let project = $derived(data.project);
@@ -9,19 +12,19 @@
 	let scrollProgress = $state(0);
 	let navVisible = $state(true);
 	let currentIndex = $state(0);
-	
+
 	const navItems = [
 		{ id: 'home', label: 'Home' },
 		{ id: 'overview', label: 'Overview' },
 		{ id: 'features', label: 'Features' },
 		{ id: 'tech-stack', label: 'Tech Stack' }
 	];
-	
+
 	function onScroll() {
 		const maxScroll = document.body.scrollHeight - window.innerHeight;
 		scrollProgress = (window.scrollY / maxScroll) * 100;
 	}
-	
+
 	function nextSlide() {
 		if (!project.images) return;
 		currentIndex = (currentIndex + 1) % project.images.length;
@@ -30,7 +33,7 @@
 	$effect(() => {
 		window.addEventListener('scroll', onScroll);
 		return () => window.removeEventListener('scroll', onScroll);
-	});	
+	});
 
 	$effect(() => {
 		if (!project.images?.length) return;
@@ -115,9 +118,11 @@
 	<article class="actions">
 		<button type="button" disabled={project.urls.live === null ? true : false}>
 			<a href={project.urls.live} target="_blank" rel="noopener noreferrer">Live</a>
+			<Icon data={play} scale={1.2} />
 		</button>
 		<button type="button">
 			<a href={project.urls.repo} target="_blank" rel="noopener noreferrer">Repo</a>
+			<Icon data={github} scale={1.2} />
 		</button>
 	</article>
 </section>
@@ -125,7 +130,7 @@
 <style>
 	section {
 		padding-top: 1rem;
-		
+
 		& > * {
 			margin-bottom: 1rem;
 		}
@@ -184,7 +189,9 @@
 				background: var(--tertiary);
 				cursor: pointer;
 				padding: 0;
-				transition: background 0.2s, transform 0.2s;
+				transition:
+					background 0.2s,
+					transform 0.2s;
 
 				&.active {
 					background: var(--primary);
