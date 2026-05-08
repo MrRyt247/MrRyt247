@@ -11,11 +11,11 @@ export const socials: Icon[] = [
 	{
 		icon: github,
 		label: 'GitHub',
-		url: 'https://#'
+		url: 'https://github.com/MrRyt247'
 	},
 	{
 		icon: linkedin,
 		label: 'LinkedIn',
-		url: 'https://#'
+		url: 'https://www.linkedin.com/in/mrryt'
 	}
 ];

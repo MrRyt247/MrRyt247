@@ -1,6 +1,8 @@
 <script lang="ts">
-	// import Icon from 'svelte-awesome/components/Icon.svelte';
-	// import download from 'svelte-awesome/icons/download';
+	import Icon from 'svelte-awesome/components/Icon.svelte';
+	import play from 'svelte-awesome/icons/play';
+	import github from 'svelte-awesome/icons/github';
+
 	let { data, index, isMobile } = $props();
 
 	import { technologies } from '../data/techStack.ts';
@@ -32,11 +34,11 @@
 		<div class="actions">
 			<button type="button" disabled={data.urls.live === null ? true : false}>
 				<a href={data.urls.live} target="_blank" rel="noopener noreferrer">Live</a>
-				<!-- <Icon data={download} scale={1.5} /> -->
+				<Icon data={play} scale={1.2}/>
 			</button>
 			<button type="button">
 				<a href={data.urls.repo} target="_blank" rel="noopener noreferrer">Repo</a>
-				<!-- <Icon data={download} scale={1.5} /> -->
+				<Icon data={github} scale={1.2} />
 			</button>
 		</div>
 	</div>
