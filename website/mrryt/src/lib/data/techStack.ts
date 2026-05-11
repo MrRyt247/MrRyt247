@@ -17,6 +17,9 @@ import VscodeIconsFileTypePowershell from '~icons/vscode-icons/file-type-powersh
 import DeviconNextjs from '~icons/devicon/nextjs';
 import VscodeIconsFileTypeHardhat from '~icons/vscode-icons/file-type-hardhat';
 import VscodeIconsFileTypeSolidity from '~icons/vscode-icons/file-type-solidity';
+import LogosHono from '~icons/logos/hono';
+import MaterialIconDrizzle from '~icons/material-icon-theme/drizzle';
+import DeviconProxmox from '~icons/devicon/proxmox-wordmark';
 
 export interface Technology {
     name: string;
@@ -42,7 +45,10 @@ export const technologies: Technology[] = [
 	{ name: 'Powershell', icon: VscodeIconsFileTypePowershell },
 	{ name: 'Nextjs', icon: DeviconNextjs },
 	{ name: 'Hardhat', icon: VscodeIconsFileTypeHardhat },
-	{ name: 'Solidity', icon: VscodeIconsFileTypeSolidity }
+	{ name: 'Solidity', icon: VscodeIconsFileTypeSolidity },
+	{ name: 'Hono', icon: LogosHono },
+	{ name: 'Drizzle', icon: MaterialIconDrizzle },
+	{ name: 'Proxmox', icon: DeviconProxmox }
 ];
 
 // Search site; Unplugin Icons components
