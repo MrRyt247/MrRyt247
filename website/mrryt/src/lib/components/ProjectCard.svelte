@@ -20,9 +20,8 @@
 >
 	<div class="description">
 		<h2>{data.title}</h2>
-		<p>
-			{data.description}
-		</p>
+		<p class="type">{data.type}</p>
+		<p>{data.description}</p>
 		<div class="tags">
 			{#each data.tags as tag}
 				{@const Component = technologies.find((tech) => tech.name === tag)?.icon}
@@ -79,6 +78,11 @@
 
 			h2 {
 				font-size: 2.25rem;
+			}
+			.type {
+				font-weight: bold;
+				color: var(--secondary);
+				text-transform: capitalize;
 			}
 			.tags {
 				display: flex;
