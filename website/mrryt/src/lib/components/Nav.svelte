@@ -1,18 +1,7 @@
 <script lang="ts">
-	let { navItems, visible, scrollProgress } = $props();
+	let { navItems, visible, activeIndex } = $props();
 	import { socials } from '../data/home.ts';
 	import Icon from 'svelte-awesome/components/Icon.svelte';
-
-	function getActiveIndex(): number {
-		const numSections = navItems.length;
-		const sectionSize = 100 / numSections;
-		return Math.min(
-			Math.floor(scrollProgress / sectionSize),
-			numSections - 1
-		);
-	}
-
-	let activeIndex = $derived(getActiveIndex());
 
 	function getFontSize(index: number): string {
 		return index === activeIndex ? '1.8rem' : '1.3rem';
