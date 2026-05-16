@@ -9,7 +9,7 @@
 	let { data }: { data: PageData } = $props();
 	let project = $derived(data.project);
 
-	let scrollProgress = $state(0);
+	let activeIndex = $state(0);
 	let navVisible = $state(true);
 	let currentIndex = $state(0);
 
@@ -21,8 +21,16 @@
 	];
 
 	function onScroll() {
-		const maxScroll = document.body.scrollHeight - window.innerHeight;
-		scrollProgress = (window.scrollY / maxScroll) * 100;
+		const threshold = window.innerHeight * 0.1;
+		let newIndex = 0;
+		for (let i = navItems.length - 1; i >= 0; i--) {
+			const el = document.getElementById(navItems[i].id);
+			if (el && el.offsetTop <= window.scrollY + threshold) {
+				newIndex = i;
+				break;
+			}
+		}
+		activeIndex = newIndex;
 	}
 
 	function nextSlide() {
@@ -42,7 +50,7 @@
 	});
 </script>
 
-<Nav {navItems} {scrollProgress} visible={navVisible} />
+<Nav {navItems} {activeIndex} visible={navVisible} />
 <section>
 	<h1 id={navItems[0].id}>{project.title}</h1>
 	<figure>
@@ -209,6 +217,7 @@
 	.actions {
 		display: flex;
 		column-gap: 1rem;
+		padding-top: 1rem;
 
 		button:disabled {
 			cursor: not-allowed;

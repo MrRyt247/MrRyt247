@@ -6,7 +6,7 @@
 	import Project from '$lib/components/Project.svelte';
 	import Contact from '$lib/components/Contact.svelte';
 
-	let scrollProgress = $state(0);
+	let activeIndex = $state(0);
 	let navVisible = $state(false);
 	let isMobile = $state(false);
 
@@ -23,15 +23,21 @@
 	}
 
 	function onScroll() {
-		const maxScroll = document.body.scrollHeight - window.innerHeight;
-		scrollProgress = (window.scrollY / maxScroll) * 100;
-
 		const homeElement = document.getElementById('home');
 		if (homeElement) {
-			const homeHeight = homeElement.offsetHeight;
-			const displayPoint = homeHeight * 0.75;
-			navVisible = window.scrollY > displayPoint;
+			navVisible = window.scrollY > homeElement.offsetHeight * 0.75;
 		}
+
+		const threshold = window.innerHeight * 0.15;
+		let newIndex = 0;
+		for (let i = navItems.length - 1; i >= 0; i--) {
+			const el = document.getElementById(navItems[i].id);
+			if (el && el.offsetTop <= window.scrollY + threshold) {
+				newIndex = i;
+				break;
+			}
+		}
+		activeIndex = newIndex;
 	}
 
 	$effect(() => {
@@ -44,7 +50,7 @@
 	});
 </script>
 
-<Nav {navItems} {scrollProgress} visible={navVisible} />
+<Nav {navItems} {activeIndex} visible={navVisible} />
 <Home />
 <About />
 <TechStack />
