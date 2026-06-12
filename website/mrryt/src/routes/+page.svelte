@@ -43,7 +43,7 @@
 </script>
 
 <svelte:head>
-	<title>Flavio Sobbin — Full Stack Web Developer | MrRyt.dev</title>
+	<title>MrRyt.dev</title>
 	<meta
 		name="description"
 		content="Portfolio of Flavio Sobbin, a full stack web developer from Ghana building web apps and backend APIs with Svelte, Angular, Node.js, and more."
