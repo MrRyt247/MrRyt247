@@ -137,7 +137,7 @@
 
 			.back {
 				display: flex;
-				color: var(--font-color);
+				color: var(--primary);
 				transition: transform 200ms ease-out;
 
 				&:hover {

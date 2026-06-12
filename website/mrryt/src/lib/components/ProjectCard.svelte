@@ -41,7 +41,7 @@
 				onclick={(e) => e.stopPropagation()}
 			>
 				<a href={data.urls.live} target="_blank" rel="noopener noreferrer">Live</a>
-				<Icon data={play} scale={1.2}/>
+				<Icon data={play} scale={1.1}/>
 			</button>
 			<button type="button" onclick={(e) => e.stopPropagation()}>
 				<a href={data.urls.repo} target="_blank" rel="noopener noreferrer">Repo</a>

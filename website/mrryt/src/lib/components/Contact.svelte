@@ -4,7 +4,7 @@
 	import check from 'svelte-awesome/icons/check';
 	import envelope from 'svelte-awesome/icons/envelope';
 
-	const email = 'flaviosobbin@gmail.com';
+	const email = 'flaviosobbin04@gmail.com';
 	let copied = $state(false);
 	let copyTimeout: ReturnType<typeof setTimeout>;
 

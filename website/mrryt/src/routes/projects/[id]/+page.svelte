@@ -13,39 +13,12 @@
 	let { data }: { data: PageData } = $props();
 	let project = $derived(data.project);
 
-	let activeIndex = $state(0);
-	let navVisible = $state(true);
 	let currentIndex = $state(0);
-
-	const navItems = [
-		{ id: 'home', label: 'Home' },
-		{ id: 'overview', label: 'Overview' },
-		{ id: 'features', label: 'Features' },
-		{ id: 'tech-stack', label: 'Tech Stack' }
-	];
-
-	function onScroll() {
-		const threshold = window.innerHeight * 0.1;
-		let newIndex = 0;
-		for (let i = navItems.length - 1; i >= 0; i--) {
-			const el = document.getElementById(navItems[i].id);
-			if (el && el.offsetTop <= window.scrollY + threshold) {
-				newIndex = i;
-				break;
-			}
-		}
-		activeIndex = newIndex;
-	}
 
 	function nextSlide() {
 		if (!project.images) return;
 		currentIndex = (currentIndex + 1) % project.images.length;
 	}
-
-	$effect(() => {
-		window.addEventListener('scroll', onScroll);
-		return () => window.removeEventListener('scroll', onScroll);
-	});
 
 	$effect(() => {
 		if (!project.images?.length) return;
@@ -65,25 +38,24 @@
 	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<Nav {navItems} {activeIndex} visible={navVisible} />
 <section>
 	<div class="header">
 		<a class="back" href="/projects" aria-label="Back to all projects">
 			<Icon data={chevronLeft} scale={1.75} />
 		</a>
-		<h1 id={navItems[0].id}>{project.title}</h1>
+		<h1>{project.title}</h1>
 	</div>
 	<figure>
 		<img src={project.thumbnail} alt={project.title} />
 		<figcaption>{project.figcaption}</figcaption>
 	</figure>
 
-	<article id={navItems[1].id}>
+	<article>
 		<h2>Overview</h2>
 		<p>{project.description}</p>
 	</article>
 
-	<article id={navItems[2].id}>
+	<article>
 		{#if project.keyFeatures}
 			<h2>Key Features</h2>
 			<ul>
@@ -124,7 +96,7 @@
 		<p>{project.results}</p>
 	</article>
 
-	<article id={navItems[3].id}>
+	<article>
 		<h2>Technologies Used</h2>
 		<div class="tags">
 			{#each project.tags as tag (tag)}
@@ -170,7 +142,7 @@
 
 		.back {
 			display: flex;
-			color: var(--font-color);
+			color: var(--primary);
 			transition: transform 200ms ease-out;
 
 			&:hover {
