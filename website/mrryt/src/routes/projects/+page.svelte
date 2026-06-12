@@ -1,25 +1,28 @@
 <script lang="ts">
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import { projects } from '$lib/data/project';
-
-	let isMobile = $state(false);
-
-	function getScreenSize() {
-		const screenWidth = window.innerWidth;
-		isMobile = screenWidth <= 450;
-	}
-
-	$effect(() => {
-		window.addEventListener('resize', getScreenSize);
-		return () => window.removeEventListener('resize', getScreenSize);
-	});
+	import Icon from 'svelte-awesome/components/Icon.svelte';
+	import chevronLeft from 'svelte-awesome/icons/chevronLeft';
 </script>
 
+<svelte:head>
+	<title>Projects | MrRyt.dev</title>
+	<meta
+		name="description"
+		content="Projects by Flavio Sobbin — web apps, backend APIs, and experiments built with Svelte, Angular, Node.js, and more."
+	/>
+</svelte:head>
+
 <section>
-	<h1>Projects</h1>
+	<div class="header">
+		<a class="back" href="/" aria-label="Back to home">
+			<Icon data={chevronLeft} scale={1.75} />
+		</a>
+		<h1>Projects</h1>
+	</div>
 	<div class="content">
-		{#each [...projects].sort((a, b) => b.date.getTime() - a.date.getTime()) as project, index}
-			<ProjectCard data={project} {index} {isMobile} />
+		{#each [...projects].sort((a, b) => b.date.getTime() - a.date.getTime()) as project}
+			<ProjectCard data={project} />
 		{/each}
 	</div>
 </section>
@@ -32,11 +35,27 @@
 			margin-bottom: 1rem;
 		}
 
-		h1 {
-			text-decoration: underline;
+		.header {
+			align-items: center;
+			justify-content: flex-start;
+			gap: 1rem;
 
-			&::after {
-				position: unset;
+			.back {
+				display: flex;
+				color: var(--font-color);
+				transition: transform 200ms ease-out;
+
+				&:hover {
+					transform: translateX(-4px);
+				}
+			}
+
+			h1 {
+				text-decoration: underline;
+
+				&::after {
+					position: unset;
+				}
 			}
 		}
 

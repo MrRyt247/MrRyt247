@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { technologies } from '$lib/data/techStack';
+	import Icon from 'svelte-awesome/components/Icon.svelte';
+	import chevronLeft from 'svelte-awesome/icons/chevronLeft';
 
 	const web = ['HTML', 'CSS', 'JS', 'jQuery'];
 	const webTech = technologies.filter((tech) => web.includes(tech.name));
@@ -17,8 +19,21 @@
 	const databaseTech = technologies.filter((tech) => database.includes(tech.name));
 </script>
 
+<svelte:head>
+	<title>Tech Stack | MrRyt.dev</title>
+	<meta
+		name="description"
+		content="Technologies Flavio Sobbin works with — web, backend, programming languages, scripting, and databases."
+	/>
+</svelte:head>
+
 <section>
-	<h1>Technology Stack</h1>
+	<div class="header">
+		<a class="back" href="/" aria-label="Back to home">
+			<Icon data={chevronLeft} scale={1.75} />
+		</a>
+		<h1>Technology Stack</h1>
+	</div>
 	<div class="content">
 		<article>
 			<p>These are tools I have come across in my development journey:</p>
@@ -113,6 +128,22 @@
 
 		& > * {
 			margin-bottom: 1rem;
+		}
+
+		.header {
+			align-items: center;
+			justify-content: flex-start;
+			gap: 1rem;
+
+			.back {
+				display: flex;
+				color: var(--font-color);
+				transition: transform 200ms ease-out;
+
+				&:hover {
+					transform: translateX(-4px);
+				}
+			}
 		}
 
 		h1 {

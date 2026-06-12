@@ -1,7 +1,6 @@
 <script lang="ts">
-	let { isMobile } = $props();
 	import ProjectCard from './ProjectCard.svelte';
-	import { projects } from '../data/project.ts';	
+	import { projects } from '../data/project.ts';
 </script>
 
 <section id="projects">
@@ -9,8 +8,8 @@
 		<h1>Projects</h1>
 	</div>
 	<div class="content">
-		{#each [...projects].sort((a, b) => b.date.getTime() - a.date.getTime()).slice(0, 5) as project, index}
-			<ProjectCard data={project} {index} {isMobile}/>
+		{#each [...projects].sort((a, b) => b.date.getTime() - a.date.getTime()).slice(0, 5) as project}
+			<ProjectCard data={project} />
 		{/each}
 	</div>
 	<button type="button">

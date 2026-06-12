@@ -5,6 +5,10 @@
 	import Icon from 'svelte-awesome/components/Icon.svelte';
 	import play from 'svelte-awesome/icons/play';
 	import github from 'svelte-awesome/icons/github';
+	import chevronLeft from 'svelte-awesome/icons/chevronLeft';
+	import { page } from '$app/state';
+
+	const SITE = 'https://mrryt-dev.vercel.app';
 
 	let { data }: { data: PageData } = $props();
 	let project = $derived(data.project);
@@ -50,9 +54,25 @@
 	});
 </script>
 
+<svelte:head>
+	<title>{project.title} | MrRyt.dev</title>
+	<meta name="description" content={project.description} />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content={project.title} />
+	<meta property="og:description" content={project.description} />
+	<meta property="og:url" content={SITE + page.url.pathname} />
+	<meta property="og:image" content={SITE + project.thumbnail} />
+	<meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
+
 <Nav {navItems} {activeIndex} visible={navVisible} />
 <section>
-	<h1 id={navItems[0].id}>{project.title}</h1>
+	<div class="header">
+		<a class="back" href="/projects" aria-label="Back to all projects">
+			<Icon data={chevronLeft} scale={1.75} />
+		</a>
+		<h1 id={navItems[0].id}>{project.title}</h1>
+	</div>
 	<figure>
 		<img src={project.thumbnail} alt={project.title} />
 		<figcaption>{project.figcaption}</figcaption>
@@ -141,6 +161,21 @@
 
 		& > * {
 			margin-bottom: 1rem;
+		}
+	}
+	.header {
+		align-items: center;
+		justify-content: flex-start;
+		gap: 1rem;
+
+		.back {
+			display: flex;
+			color: var(--font-color);
+			transition: transform 200ms ease-out;
+
+			&:hover {
+				transform: translateX(-4px);
+			}
 		}
 	}
 	h1 {

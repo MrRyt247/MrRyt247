@@ -121,7 +121,7 @@ export const projects: Project[] = [
 			'This project boosted my teamwork skills, collaborating with my patner on the backend design. It also emphasizes on time management - I had to work strictly within the allocated time.',
 		urls: {
 			live: null,
-			repo: 'https://github.com/MrRyt247/space-tourism-website'
+			repo: 'https://github.com/MrRyt247/proofmint-mvp'
 		},
 		date: new Date('2025-07')
 	},

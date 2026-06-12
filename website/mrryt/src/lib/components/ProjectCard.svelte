@@ -3,7 +3,7 @@
 	import play from 'svelte-awesome/icons/play';
 	import github from 'svelte-awesome/icons/github';
 
-	let { data, index, isMobile } = $props();
+	let { data } = $props();
 
 	import { technologies } from '../data/techStack.ts';
 	import { goto } from '$app/navigation';
@@ -15,8 +15,12 @@
 
 <div
 	class="card"
-	style:flex-direction={isMobile ? 'column-reverse' : (index + 1) & 1 ? 'row' : 'row-reverse'}
+	role="link"
+	tabindex="0"
 	onclick={handleNavigate}
+	onkeydown={(e) => {
+		if (e.key === 'Enter') handleNavigate();
+	}}
 >
 	<div class="description">
 		<h2>{data.title}</h2>
@@ -31,11 +35,15 @@
 			{/each}
 		</div>
 		<div class="actions">
-			<button type="button" disabled={data.urls.live === null ? true : false}>
+			<button
+				type="button"
+				disabled={data.urls.live === null ? true : false}
+				onclick={(e) => e.stopPropagation()}
+			>
 				<a href={data.urls.live} target="_blank" rel="noopener noreferrer">Live</a>
 				<Icon data={play} scale={1.2}/>
 			</button>
-			<button type="button">
+			<button type="button" onclick={(e) => e.stopPropagation()}>
 				<a href={data.urls.repo} target="_blank" rel="noopener noreferrer">Repo</a>
 				<Icon data={github} scale={1.2} />
 			</button>
@@ -49,10 +57,15 @@
 <style>
 	.card {
 		display: flex;
+		flex-direction: row;
 		column-gap: 1rem;
 		position: relative;
 		border: solid 1px var(--primary);
 		border-inline: none;
+
+		&:nth-child(even) {
+			flex-direction: row-reverse;
+		}
 
 		&::after {
 			content: '';
@@ -119,7 +132,9 @@
 		}
 	}
 	@media screen and (max-width: 450px) {
-		.card {
+		.card,
+		.card:nth-child(even) {
+			flex-direction: column-reverse;
 			row-gap: 1rem;
 
 			.icon {
