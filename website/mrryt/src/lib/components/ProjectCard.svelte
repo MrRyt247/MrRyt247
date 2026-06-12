@@ -41,7 +41,7 @@
 				onclick={(e) => e.stopPropagation()}
 			>
 				<a href={data.urls.live} target="_blank" rel="noopener noreferrer">Live</a>
-				<Icon data={play} scale={1.1}/>
+				<Icon data={play} scale={1.1} />
 			</button>
 			<button type="button" onclick={(e) => e.stopPropagation()}>
 				<a href={data.urls.repo} target="_blank" rel="noopener noreferrer">Repo</a>
@@ -79,6 +79,8 @@
 		}
 		&:hover {
 			cursor: pointer;
+			transform: translateY(-4px);
+			box-shadow: 0 8px 16px light-dark(#00000022, #00000066);
 
 			&::after {
 				width: 100%;

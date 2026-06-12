@@ -29,7 +29,7 @@
             flex-direction: column;
 			row-gap: 2rem;
 			background-color: var(--bg);
-			margin: 0.5rem;
+			margin: 1rem 0.5rem 0.5rem;
 		}
 		
 		button {
